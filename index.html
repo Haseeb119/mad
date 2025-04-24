@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MADKETERS | Mad Minds. Measurable Results.</title>
+  <!-- Tailwind CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Google Fonts: Inter + Bebas Neue -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Bebas+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --neon-orange: #FF611D;
+      --neon-blue: #00BFFF;
+      --neon-green: #00FFD0;
+      --deep-navy: #101828;
+    }
+    html, body {
+      background: #101828;
+      color: white;
+      font-family: 'Inter', Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
+    .headline-glow {
+      color: #fff;
+      text-shadow:
+        0 0 8px var(--neon-blue),
+        0 0 16px #22d3ee33;
+      letter-spacing: 1px;
+    }
+    .sub-glow {
+      color: #aeefff;
+      font-weight: 500;
+      text-shadow:
+        0 0 6px #00BFFF44;
+    }
+    .logo-gradient {
+      font-family: 'Bebas Neue', 'Inter', Arial, sans-serif;
+      background: linear-gradient(90deg, #6beffd 0%, #2b6eed 45%, #7c58f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    .svg-orbit {
+      animation: orbit 11s linear infinite;
+      transform-origin: 50% 50%;
+    }
+    @keyframes orbit {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+    .mad-section {
+      background: rgba(16,24,40,0.93);
+      border-radius: 1.25rem;
+      box-shadow: 0 8px 32px 0 #0003;
+      margin: 0 auto;
+      padding: 2.5rem 1rem;
+      max-width: 980px;
+    }
+    .mad-card {
+      background: rgba(34,52,89,0.7);
+      border-radius: 1rem;
+      padding: 1.5rem 1.2rem 1.3rem 1.2rem;
+      margin: .5rem 0;
+      box-shadow: 0 2px 12px 0 #01344d28;
+    }
+    .timeline-bar {
+      background: linear-gradient(90deg, var(--neon-orange), #7c58f7);
+      border-radius: 10px;
+    }
+    .stat-title {
+      color: var(--neon-orange);
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+    .testimonial-card {
+      background: rgba(16,24,40,0.8);
+      border-radius: 1rem;
+      border-left: 5px solid var(--neon-blue);
+      box-shadow: 0 2px 16px 0 #00ffd042;
+      padding: 1.3rem 1.5rem 1.3rem 1.3rem;
+      margin-bottom: 1.25rem;
+      font-size: 1.11rem;
+      color: #fff;
+      font-style: italic;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '';
+      background: url("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/svgs/regular/comment-dots.svg") center/2rem no-repeat;
+      width: 2rem;
+      height: 2rem;
+      position: absolute;
+      left: -2.6rem;
+      top: 1rem;
+      opacity: 0.5;
+    }
+    .form-label {
+      color: #fff;
+      font-weight: 600;
+    }
+    .form-ctabtn {
+      background: linear-gradient(90deg, var(--neon-orange), var(--neon-blue), var(--neon-green));
+      color: #101828;
+      font-weight: bold;
+      padding: 0.8rem 2.2rem;
+      border-radius: 2.5rem;
+      transition: background .3s;
+    }
+    /* animations */
+    .scroll-fade {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s cubic-bezier(.55,.06,.68,.19), transform .6s;
+    }
+    .scroll-fade.inview {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* override autofill for dark bg inputs */
+    input:-webkit-autofill,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:hover, 
+    textarea:-webkit-autofill, 
+    textarea:-webkit-autofill:focus,
+    textarea:-webkit-autofill:hover,
+    select:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 50px #223459 inset;
+      -webkit-text-fill-color: white !important;
+      caret-color: white !important;
+    }
+    ::selection {
+      background: #00ffd0;
+      color: #101828;
+    }
+    /* Hide number up-down arrows in all browsers for budget field */
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+    .bg-mad-gradient {
+      background: linear-gradient(120deg, #101828, #22243b 80%, #272254 100%);
+    }
+    @media (max-width: 500px) {
+      .mad-section {
+        padding: 1.25rem 0.3rem;
+      }
+      .headline-glow {
+        font-size: 1.2rem !important;
+      }
+      .logo-gradient {
+        font-size: 1.8rem !important;
+      }
+    }
+    /* Avoid scrollbars for PDF export */
+    body {
+      overflow-x: hidden !important;
+    }
+  </style>
+</head>
+<body class="bg-mad-gradient">
+  <!-- Sticky Navigation Bar -->
+  <nav class="fixed top-0 left-0 right-0 z-30 bg-opacity-85 bg-mad-gradient shadow-lg border-b border-gray-700">
+    <div class="container mx-auto px-4 flex items-center justify-between h-16">
+      <!-- Logo (gradient style) -->
+      <a href="#hero" class="flex-shrink-0" aria-label="Madketers Home">
+        <span class="logo-gradient text-3xl" style="letter-spacing:2px;">MADKETERS</span>
+      </a>
+      <!-- Desktop Links -->
+      <div class="hidden md:flex space-x-7 font-semibold text-sm uppercase">
+        <a href="#hero" class="hover:text-neon-orange transition">Home</a>
+        <a href="#mad-formula" class="hover:text-neon-orange transition">Work</a>
+        <a href="#how-we-work" class="hover:text-neon-orange transition">Services</a>
+        <a href="#contact" class="hover:text-neon-orange transition">Contact</a>
+      </div>
+      <!-- Socials -->
+      <div class="hidden md:flex gap-5 items-center">
+        <a href="#" title="LinkedIn" class="text-lg text-gray-300 hover:text-[#0091ff]"><i class="fab fa-linkedin"></i></a>
+        <a href="#" title="Instagram" class="text-lg text-gray-300 hover:text-pink-500"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="Email" class="text-lg text-gray-300 hover:text-neon-orange"><i class="fas fa-envelope"></i></a>
+      </div>
+      <!-- Mobile Menu -->
+      <div class="md:hidden flex items-center">
+        <button id="mad-menu-btn" class="focus:outline-none text-white text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile nav dropdown -->
+    <div id="mad-mobile-nav" class="hidden md:hidden absolute top-16 left-0 w-full bg-[#151928] border-t border-gray-700 z-40">
+      <div class="flex flex-col text-lg p-5 space-y-4 font-semibold">
+        <a href="#hero" class="hover:text-neon-orange transition">Home</a>
+        <a href="#mad-formula" class="hover:text-neon-orange transition">Work</a>
+        <a href="#how-we-work" class="hover:text-neon-orange transition">Services</a>
+        <a href="#contact" class="hover:text-neon-orange transition">Contact</a>
+        <div class="flex pt-4 gap-6">
+          <a href="#" title="LinkedIn" class="text-gray-300 hover:text-[#0091ff] text-xl"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="Instagram" class="text-gray-300 hover:text-pink-500 text-xl"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="Email" class="text-gray-300 hover:text-neon-orange text-xl"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Hero Section -->
+  <section id="hero" class="pt-24 min-h-screen flex flex-col justify-center items-center text-center">
+    <div class="w-full flex flex-col items-center px-3 sm:px-0">
+      <div class="flex items-center justify-center gap-3 mb-4 md:mb-6">
+        <span class="logo-gradient text-4xl md:text-6xl" style="font-family: 'Bebas Neue', sans-serif; font-weight: bold;">MADKETERS</span>
+      </div>
+      <h1 class="headline-glow text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-2 z-10" style="font-family:'Bebas Neue',sans-serif; letter-spacing:2px;">Mad Minds.<br class="md:hidden"> Measurable Results.</h1>
+      <div class="sub-glow text-lg sm:text-xl mt-4 max-w-2xl mx-auto">
+        We’re not your average marketers. We’re Madketers.<br>
+        A high-functioning squad of ex-big-agency pros who mix bold content, automation wizardry, and surgical ad strategy to create performance marketing that doesn’t just perform—it performs like hell.
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 mt-8 mb-3 justify-center">
+        <a href="#contact" class="form-ctabtn text-base shadow-md hover:scale-105 transition">🚀 Get My Growth Plan</a>
+        <a href="#how-we-work" class="form-ctabtn text-base shadow-md hover:scale-105 transition bg-gradient-to-r from-blue-600 via-neon-blue to-neon-green text-deep-navy">🎯 See How We Work</a>
+      </div>
+      <!-- Animated orbit logos (SVG) -->
+      <div class="mt-8 relative w-full flex justify-center">
+        <svg width="220" height="80" viewBox="0 0 220 80" class="absolute z-0 hidden sm:block">
+          <!-- Orbit path -->
+          <ellipse cx="110" cy="40" rx="92" ry="24" fill="none" stroke="#7c58f755" stroke-width="2"/>
+        </svg>
+        <div class="flex gap-7 sm:gap-12 relative z-10">
+          <i class="fab fa-facebook-square text-3xl svg-orbit text-[#0866FF]" title="Meta"></i>
+          <i class="fab fa-google text-3xl svg-orbit text-[#ffb100]" title="Google"></i>
+          <i class="fab fa-linkedin text-3xl svg-orbit text-[#0a66c2]" title="LinkedIn"></i>
+          <i class="fab fa-tiktok text-3xl svg-orbit text-[#fff] bg-black rounded-xl p-1" title="TikTok"></i>
+          <i class="fab fa-youtube text-3xl svg-orbit text-[#FF0000]" title="YouTube"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Mad Formula Section -->
+  <section id="mad-formula" class="mad-section mt-8">
+    <h2 class="text-2xl md:text-3xl font-extrabold flex items-center gap-3 headline-glow mb-7"><span class="text-yellow-400 text-2xl"><i class="fas fa-brain"></i></span> What Happens When Performance Marketers Go a Little Mad?</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Cards with wild copy -->
+      <div class="mad-card flex flex-col items-center text-center shadow scroll-fade">
+        <span class="text-3xl mb-2 text-neon-orange"><i class="fas fa-chess-knight"></i></span>
+        <div class="font-bold text-lg">Strategic Planning</div>
+        <div class="mt-1 text-gray-200">We don’t “ideate.” We orchestrate attacks. Funnel plans so smart they could outwit your competitor’s CMO.</div>
+      </div>
+      <div class="mad-card flex flex-col items-center text-center shadow scroll-fade">
+        <span class="text-3xl mb-2 text-neon-blue"><i class="fas fa-chart-line"></i></span>
+        <div class="font-bold text-lg">Data & Automation</div>
+        <div class="mt-1 text-gray-200">We talk in ROAS, dream in dashboards. CRM flows, Zapier zaps, GA4 wizardry — automated to scale.</div>
+      </div>
+      <div class="mad-card flex flex-col items-center text-center shadow scroll-fade">
+        <span class="text-3xl mb-2 text-neon-green"><i class="fab fa-hubspot"></i></span>
+        <div class="font-bold text-lg">Social Media Domination</div>
+        <div class="mt-1 text-gray-200">From thumb-stop to heart-drop. Scroll-breaking content + calculated media buying = domination.</div>
+      </div>
+      <div class="mad-card flex flex-col items-center text-center shadow scroll-fade md:col-span-2">
+        <span class="text-3xl mb-2 text-fuchsia-400"><i class="fas fa-bomb"></i></span>
+        <div class="font-bold text-lg">Content That’s Not Boring</div>
+        <div class="mt-1 text-gray-200">We don’t make “posts.” We make scroll assassins. Bold. Weird. Sticky. Branded like it’s your religion.</div>
+      </div>
+      <div class="mad-card flex flex-col items-center text-center shadow scroll-fade md:col-span-1">
+        <span class="text-3xl mb-2 text-blue-400"><i class="fas fa-rocket"></i></span>
+        <div class="font-bold text-lg">Platform-First Execution</div>
+        <div class="mt-1 text-gray-200">Madketers speak fluent Meta, Google, LinkedIn, and TikTok. We don’t guess—we optimize by the minute.</div>
+      </div>
+    </div>
+    <div class="mt-7 relative">
+      <div class="absolute left-0 right-0 h-px bg-gradient-to-r from-neon-blue via-transparent to-neon-orange opacity-25" style="top: 1.8rem;"></div>
+      <div class="flex flex-row flex-wrap justify-center gap-2 mt-8">
+        <span class="inline-flex items-center px-3 py-1.5 bg-[#29304a] rounded text-sm font-bold text-neon-blue mr-1">Bold Ideas</span>
+        <span class="inline-flex items-center px-3 py-1.5 bg-[#29304a] rounded text-sm font-bold text-neon-orange mr-1">Weird Science</span>
+        <span class="inline-flex items-center px-3 py-1.5 bg-[#29304a] rounded text-sm font-bold text-neon-green mr-1">Data Obsessed</span>
+      </div>
+    </div>
+  </section>
+  <!-- How We Work Section -->
+  <section id="how-we-work" class="mad-section mt-8">
+    <h2 class="headline-glow text-2xl md:text-3xl font-extrabold flex items-center mb-8"><span class="text-pink-400 mr-2"><i class="fas fa-microscope"></i></span> The Mad Method: We’re Not Here to Test. We’re Here to Win.</h2>
+    <div class="flex flex-col md:flex-row items-center gap-8">
+      <div class="flex-1 flex flex-col max-w-lg gap-7">
+        <!-- Timeline step 1 -->
+        <div class="flex items-center gap-4 scroll-fade">
+          <div class="timeline-bar w-3.5 h-3.5"></div>
+          <div>
+            <div class="font-semibold text-lg text-neon-orange">Diagnose the Chaos</div>
+            <div class="text-gray-200 text-sm mt-1">We deep dive into your data, ads, and content. We ask dumb questions. Then we find gold.</div>
+          </div>
+        </div>
+        <!-- step 2 -->
+        <div class="flex items-center gap-4 scroll-fade">
+          <div class="timeline-bar w-3.5 h-3.5"></div>
+          <div>
+            <div class="font-semibold text-lg text-neon-blue">Design Your Weapon</div>
+            <div class="text-gray-200 text-sm mt-1">Custom funnel. Laser-sharp audiences. Visuals so good they haunt your competitors.</div>
+          </div>
+        </div>
+        <!-- step 3 -->
+        <div class="flex items-center gap-4 scroll-fade">
+          <div class="timeline-bar w-3.5 h-3.5"></div>
+          <div>
+            <div class="font-semibold text-lg text-neon-green">Launch & Loop</div>
+            <div class="text-gray-200 text-sm mt-1">We don’t “set and forget.” We optimize, tweak, and tweak again till it’s a beast.</div>
+          </div>
+        </div>
+        <!-- step 4 -->
+        <div class="flex items-center gap-4 scroll-fade">
+          <div class="timeline-bar w-3.5 h-3.5"></div>
+          <div>
+            <div class="font-semibold text-lg text-fuchsia-400">Scale, Baby, Scale</div>
+            <div class="text-gray-200 text-sm mt-1">This is where it gets mad. You’ll start needing bigger spreadsheets.</div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-1 flex justify-center items-center mt-6 md:mt-0">
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=facearea&w=320&h=320&facepad=3&q=80" alt="mad scientist style digital strategist" class="rounded-xl shadow-lg max-w-xs md:max-w-md border-4 border-neon-blue" style="filter:hue-rotate(-22deg) saturate(1.1);">
+      </div>
+    </div>
+  </section>
+  <!-- Who Are the Madketers Section -->
+  <section id="team" class="mad-section mt-8">
+    <h2 class="headline-glow text-2xl md:text-3xl font-extrabold mb-5 flex items-center gap-2">
+      <span class="text-green-300"><i class="fas fa-user-astronaut"></i></span>
+      Built by the Brains Behind the Brands.
+    </h2>
+    <div class="grid md:grid-cols-2 gap-6 items-center">
+      <div>
+        <p class="text-lg text-gray-200 mb-5">
+          We’re not fresh grads who just discovered “hook, story, offer.” We’re a rogue team of marketers who’ve run 9-figure funnels, scaled D2C monsters, and made enterprise brands act like creators.<br><br>
+          You don’t just get an account manager. You get a squad of ex-agency, ex-brand, ex-corporate rebels who actually know what they’re doing.
+        </p>
+        <a href="#contact" class="form-ctabtn text-base shadow-md hover:scale-105 transition">💬 Book a Mad Strategy Call</a>
+      </div>
+      <div class="flex justify-center">
+        <!-- Comic panel team illustration placeholder -->
+        <div class="flex items-center space-x-4">
+          <div class="flex flex-col items-center">
+            <span class="logo-gradient text-lg font-bold">Jay</span>
+            <i class="fas fa-drafting-compass text-3xl text-neon-orange"></i>
+            <span class="text-xs text-gray-400 mt-1">Funnel Blueprint</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <span class="logo-gradient text-lg font-bold">Ryan</span>
+            <i class="fas fa-file-alt text-3xl text-neon-blue"></i>
+            <span class="text-xs text-gray-400 mt-1">Flaming Copy</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <span class="logo-gradient text-lg font-bold">Amy</span>
+            <i class="fas fa-database text-3xl text-neon-green"></i>
+            <span class="text-xs text-gray-400 mt-1">Giant Data Sheet</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Proof Section -->
+  <section id="proof" class="mad-section mt-8">
+    <h2 class="headline-glow text-2xl md:text-3xl font-extrabold mb-7 flex items-center gap-2">
+      <span class="text-yellow-400"><i class="fas fa-chart-bar"></i></span>
+      The Madness Works. Here’s Proof.
+    </h2>
+    <div class="grid md:grid-cols-3 gap-6 mb-6">
+      <div class="mad-card flex flex-col items-start scroll-fade">
+        <div class="stat-title text-xl mb-1">4.7X ROAS in 45 Days</div>
+        <div class="text-md text-gray-100">D2C Food Brand</div>
+      </div>
+      <div class="mad-card flex flex-col items-start scroll-fade">
+        <div class="stat-title text-xl mb-1">₹60 CPL for MBA Program</div>
+        <div class="text-md text-gray-100">in a ₹300 Market</div>
+      </div>
+      <div class="mad-card flex flex-col items-start scroll-fade">
+        <div class="stat-title text-xl mb-1">+132% CTR Uplift</div>
+        <div class="text-md text-gray-100">Using Creative Refresh System</div>
+      </div>
+    </div>
+    <!-- Logos (monochrome, hover color) -->
+    <div class="flex flex-wrap gap-9 items-center justify-center my-3">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Googleplex-Logo.svg" alt="Brand logo" class="h-8 grayscale hover:filter-none transition">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Meta_Platforms_Logo.svg" alt="Brand logo" class="h-8 grayscale hover:filter-none transition">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/LinkedIn_logo_initials.png" alt="Brand logo" class="h-8 grayscale hover:filter-none transition">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg" alt="Brand logo" class="h-8 grayscale hover:filter-none transition">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="Brand logo" class="h-8 grayscale hover:filter-none transition">
+    </div>
+    <!-- Short testimonials -->
+    <div class="flex flex-col md:flex-row gap-6 items-start mt-7">
+      <blockquote class="testimonial-card scroll-fade">“They’re mad, but in a genius way.” <span class="not-italic font-bold text-neon-orange">- Client</span></blockquote>
+      <blockquote class="testimonial-card scroll-fade">“We gave them our ad account. Now we give them credit for our revenue.” 💸</blockquote>
+      <blockquote class="testimonial-card scroll-fade">“Madketers made us believe in Instagram again. And therapy.” 🤡</blockquote>
+    </div>
+  </section>
+  <!-- Testimonials Carousel Simplified -->
+  <section id="testimonials" class="mad-section mt-8">
+    <h2 class="headline-glow text-2xl md:text-3xl font-extrabold mb-3"><span class="text-teal-400"><i class="fas fa-laugh-beam"></i></span> You’ll Laugh. You’ll Cry. You’ll Hit Record Sales.</h2>
+    <div class="flex flex-wrap gap-5 justify-center">
+      <div class="testimonial-card w-72">“We gave them our ad account. Now we give them credit for our revenue.” 💸</div>
+      <div class="testimonial-card w-72">“Madketers made us believe in Instagram again. And therapy.” 🤡</div>
+      <div class="testimonial-card w-72">“Crazy ideas. Crazy results. 10/10.” 🔥</div>
+    </div>
+  </section>
+  <!-- Contact Form Section -->
+  <section id="contact" class="mad-section mt-8">
+    <h2 class="headline-glow text-2xl md:text-3xl font-extrabold mb-4"><span class="text-red-400"><i class="fas fa-envelope-open-text"></i></span> Ready to Scale With the Mad Ones?</h2>
+    <p class="text-gray-200 mb-7 max-w-2xl">🔥 Get a Free 30-Min Funnel Breakdown<br>
+      We’ll audit your current setup, and send you a breakdown of what’s working, what’s not, and how to fix it — no fluff.
+    </p>
+    <form class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto bg-[#17203b] bg-opacity-90 rounded-2xl p-7" autocomplete="off" novalidate>
+      <div class="flex flex-col">
+        <label for="name" class="form-label mb-2">Name</label>
+        <input id="name" name="name" type="text" required class="rounded-md bg-[#223459] px-4 py-2 text-lg text-white focus:outline-none focus:ring-2 focus:ring-neon-blue transition" placeholder="Your Name">
+      </div>
+      <div class="flex flex-col">
+        <label for="email" class="form-label mb-2">Email</label>
+        <input id="email" name="email" type="email" required class="rounded-md bg-[#223459] px-4 py-2 text-lg text-white focus:outline-none focus:ring-2 focus:ring-neon-blue transition" placeholder="you@email.com">
+      </div>
+      <div class="flex flex-col">
+        <label for="brandUrl" class="form-label mb-2">Brand URL</label>
+        <input id="brandUrl" name="brandUrl" type="url" required class="rounded-md bg-[#223459] px-4 py-2 text-lg text-white focus:outline-none focus:ring-2 focus:ring-neon-green transition" placeholder="https://yourbrand.com">
+      </div>
+      <div class="flex flex-col">
+        <label for="budget" class="form-label mb-2">Monthly Ad Budget</label>
+        <select id="budget" name="budget" required class="rounded-md bg-[#223459] px-4 py-2 text-lg text-white focus:outline-none focus:ring-2 focus:ring-neon-green transition">
+          <option value="">Select range</option>
+          <option>&lt; ₹50k</option>
+          <option>₹50k-₹2L</option>
+          <option>₹2L-₹10L</option>
+          <option>&gt; ₹10L</option>
+        </select>
+      </div>
+      <div class="flex flex-col md:col-span-2">
+        <label for="challenge" class="form-label mb-2">What’s your biggest marketing challenge?</label>
+        <textarea id="challenge" name="challenge" required rows="3" class="resize-none rounded-md bg-[#223459] px-4 py-2 text-lg text-white focus:outline-none focus:ring-2 focus:ring-neon-orange transition" placeholder="Keeping up with content? Ads not scaling? Attribution pain?"></textarea>
+      </div>
+      <div class="flex justify-center md:col-span-2 mt-2">
+        <button type="submit" class="form-ctabtn text-lg shadow-md hover:scale-105 transition"><i class="fas fa-bolt"></i> Unleash the Mad Plan</button>
+      </div>
+    </form>
+  </section>
+  <!-- Footer -->
+  <footer class="mt-12 pb-10">
+    <div class="flex flex-col items-center">
+      <div class="logo-gradient text-3xl mb-2">MADKETERS</div>
+      <div class="font-semibold mb-2 px-4 text-center text-white text-opacity-90">And if you’re still scrolling, maybe you're ready to stop playing it safe.</div>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 py-3 mb-3 text-sm uppercase text-gray-300 font-semibold">
+        <div class="flex gap-5">
+          <a href="#hero" class="hover:text-neon-orange">Home</a>
+          <a href="#mad-formula" class="hover:text-neon-orange">Work</a>
+          <a href="#how-we-work" class="hover:text-neon-orange">Services</a>
+          <a href="#contact" class="hover:text-neon-orange">Contact</a>
+        </div>
+        <div class="flex gap-5">
+          <a href="#" class="hover:text-[#0091ff]"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="hover:text-pink-500"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="hover:text-neon-orange"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="text-xs text-gray-400 text-center mb-3">
+        Performance Marketing. Content that slaps. Strategy that sticks. <br>
+        Built with way too much coffee and slightly dangerous energy.
+      </div>
+    </div>
+  </footer>
+  <!-- Scroll-in Animation Script -->
+  <script>
+    function inViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight||document.documentElement.clientHeight) - 36
+        && rect.bottom >= 50
+      );
+    }
+    function onScrollFade() {
+      document.querySelectorAll('.scroll-fade').forEach(el => {
+        if (inViewport(el)) el.classList.add('inview');
+        else el.classList.remove('inview');
+      });
+    }
+    document.addEventListener('DOMContentLoaded', onScrollFade);
+    window.addEventListener('scroll', onScrollFade);
+    // Mobile menu
+    document.getElementById('mad-menu-btn').onclick = () => {
+      const nav = document.getElementById('mad-mobile-nav');
+      nav.classList.toggle('hidden');
+    };
+    document.querySelectorAll('#mad-mobile-nav a').forEach(a => {
+      a.onclick = () => document.getElementById('mad-mobile-nav').classList.add('hidden');
+    });
+    // Hide menu on resize > md
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        document.getElementById('mad-mobile-nav').classList.add('hidden');
+      }
+    });
+    // Basic form validation (no submit)
+    document.querySelectorAll("form").forEach(form => {
+      form.onsubmit = e => {
+        let valid = true;
+        form.querySelectorAll("[required]").forEach(inp => {
+          if (!inp.value.trim()) valid = false;
+          inp.classList.toggle('ring-4', !inp.value.trim());
+          inp.classList.toggle('ring-red-500', !inp.value.trim());
+        });
+        if (!valid) e.preventDefault();
+      };
+    });
+  </script>
+</body>
+</html>
+

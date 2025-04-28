@@ -174,29 +174,67 @@
     }
     
     /* Fire effect for "hell" */
-    .fire-text {
+   .fire-text {
   display: inline-block;
-  color: #fff;
+  color: #fff9c4;
   font-weight: bold;
   text-shadow: 
-    0 0 5px #ff6, 
-    0 0 10px #ff6, 
-    0 0 15px #ff3, 
-    0 0 20px #f60;
+    0 0 4px #fff,
+    0 0 11px #fff,
+    0 0 19px #fff,
+    0 0 40px #ff9800,
+    0 0 80px #ff9800,
+    0 0 90px #ff9800,
+    0 0 100px #ff9800,
+    0 0 150px #ff9800;
   position: relative;
-  animation: flicker 3s infinite alternate;
+  animation: flames 2s ease-in-out infinite alternate;
 }
 
-@keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { 
+@keyframes flames {
+  0%, 100% {
     text-shadow: 
-      0 0 5px #ff6, 
-      0 0 10px #ff6, 
-      0 0 15px #ff3, 
-      0 0 20px #f60;
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #ff9800,
+      0 0 80px #ff9800,
+      0 0 90px #ff9800,
+      0 0 100px #ff9800,
+      0 0 150px #ff9800;
   }
-  20%, 24%, 55% { 
-    text-shadow: none;
+  25% {
+    text-shadow: 
+      0 0 4px #fff,
+      0 0 10px #fff,
+      0 0 18px #fff,
+      0 0 38px #ff9800,
+      0 0 73px #ff9800,
+      0 0 80px #ff9800,
+      0 0 94px #ff9800,
+      0 0 140px #ff9800;
+  }
+  50% {
+    text-shadow: 
+      0 0 5px #fff,
+      0 0 12px #fff,
+      0 0 20px #fff,
+      0 0 42px #ff9800,
+      0 0 85px #ff9800,
+      0 0 95px #ff9800,
+      0 0 105px #ff9800,
+      0 0 155px #ff9800;
+  }
+  75% {
+    text-shadow: 
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #ff9800,
+      0 0 80px #ff9800,
+      0 0 90px #ff9800,
+      0 0 100px #ff9800,
+      0 0 150px #ff9800;
   }
 }
     

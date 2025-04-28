@@ -150,56 +150,6 @@
     .bg-mad-gradient {
       background: linear-gradient(120deg, #101828, #22243b 80%, #272254 100%);
     }
-    
-    /* Fire effect for the word "hell" */
-    .fire-text {
-      position: relative;
-      display: inline-block;
-      color: #ffdd3c;
-      font-weight: bold;
-      text-shadow: 
-        0 -1px 0 #fff,
-        0 1px 3px rgba(255, 136, 0, 0.8),
-        0 2px 10px rgba(255, 95, 0, 0.88),
-        0 3px 15px rgba(255, 30, 0, 0.85);
-      animation: flameDance 0.9s infinite alternate;
-    }
-    
-    @keyframes flameDance {
-      0% {
-        text-shadow: 
-          0 -1px 0 #fff,
-          0 1px 3px rgba(255, 136, 0, 0.8),
-          0 2px 16px rgba(255, 95, 0, 0.88),
-          0 3px 20px rgba(255, 30, 0, 0.85);
-      }
-      100% {
-        text-shadow: 
-          0 -1px 0 #fff,
-          0 0 5px rgba(255, 200, 0, 0.8),
-          0 1px 10px rgba(255, 136, 0, 0.85),
-          0 2px 18px rgba(255, 95, 0, 0.7),
-          0 3px 15px rgba(255, 30, 0, 0.5);
-      }
-    }
-    
-    .fire-text::before {
-      content: '';
-      position: absolute;
-      top: -70%;
-      left: -20%;
-      width: 140%;
-      height: 240%;
-      background: radial-gradient(ellipse at center, rgba(255, 140, 0, 0.15) 0%, rgba(255, 80, 0, 0) 70%);
-      z-index: -1;
-      animation: glowPulse 1.5s infinite alternate;
-    }
-    
-    @keyframes glowPulse {
-      0% { opacity: 0.5; }
-      100% { opacity: 0.8; }
-    }
-    
     @media (max-width: 500px) {
       .mad-section {
         padding: 1.25rem 0.3rem;
@@ -216,17 +166,56 @@
       overflow-x: hidden !important;
     }
     
-    /* Headline size styles from the first code example */
     @media (max-width: 768px) {
       .headline-size {
-        font-size: 4.5rem; /* Much larger for mobile */
+          font-size: 4.5rem; /* Much larger for mobile */
+      }
+    }
+        
+    @media (min-width: 769px) {
+      .headline-size {
+          font-size: 8rem; /* Dramatically larger for desktop */
       }
     }
     
-    @media (min-width: 769px) {
-      .headline-size {
-        font-size: 8rem; /* Dramatically larger for desktop */
+    /* Fire effect for the word "hell" */
+    .fire-text {
+      position: relative;
+      display: inline-block;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 0 0 10px #ff3, 0 0 20px #ff6, 0 0 30px #f90;
+      animation: fire-animation 0.8s infinite alternate;
+    }
+    
+    @keyframes fire-animation {
+      0% {
+        text-shadow: 0 0 10px #ff3, 0 0 20px #ff6, 0 0 30px #f90, 0 -10px 40px #f00;
       }
+      25% {
+        text-shadow: 0 0 10px #ff3, 0 0 20px #ff6, 0 0 30px #f90, 0 -5px 35px #f00;
+      }
+      50% {
+        text-shadow: 0 0 10px #ff3, 0 0 20px #ff6, 0 0 30px #f90, 0 -15px 40px #f00;
+      }
+      75% {
+        text-shadow: 0 0 10px #ff3, 0 0 20px #ff6, 0 0 30px #f90, 0 -8px 38px #f00;
+      }
+      100% {
+        text-shadow: 0 0 10px #ff3, 0 0 20px #ff6, 0 0 30px #f90, 0 -12px 40px #f00;
+      }
+    }
+    
+    .fire-text::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(255,255,0,0.3) 0%, rgba(255,102,0,0.2) 50%, rgba(255,0,0,0) 70%);
+      pointer-events: none;
+      z-index: -1;
     }
   </style>
 </head>
@@ -398,7 +387,9 @@
           We're not fresh grads who just discovered "hook, story, offer." We're a rogue team of marketers who've run 9-figure funnels, scaled D2C monsters, and made enterprise brands act like creators.<br><br>
           You don't just get an account manager. You get a squad of ex-agency, ex-brand, ex-corporate rebels who actually know what they're doing.
         </p>
-        <a href="#contact" class="form-ctabtn text-base shadow-md hover:scale-105 transition">💬 Book a Mad Strategy Call</a>
+        <div class="flex justify-center">
+          <a href="#contact" class="form-ctabtn text-base shadow-md hover:scale-105 transition">💬 Book a Mad Strategy Call</a>
+        </div>
       </div>
       <div class="flex justify-center">
         <!-- Comic panel team illustration placeholder -->

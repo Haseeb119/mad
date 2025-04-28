@@ -175,24 +175,30 @@
     
     /* Fire effect for "hell" */
     .fire-text {
-      display: inline-block;
-      color: #fff;
-      font-weight: bold;
-      text-shadow: 0 0 10px #ff3, 0 0 20px #f90, 0 0 30px #f60;
-      background: linear-gradient(to bottom, #ff6, #f90, #f60);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      position: relative;
-      animation: flicker 2s infinite;
-    }
-    
-    @keyframes flicker {
-      0%, 100% { opacity: 1; }
-      25% { opacity: 0.95; }
-      50% { opacity: 0.97; }
-      75% { opacity: 0.93; }
-    }
+  display: inline-block;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 
+    0 0 5px #ff6, 
+    0 0 10px #ff6, 
+    0 0 15px #ff3, 
+    0 0 20px #f60;
+  position: relative;
+  animation: flicker 3s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { 
+    text-shadow: 
+      0 0 5px #ff6, 
+      0 0 10px #ff6, 
+      0 0 15px #ff3, 
+      0 0 20px #f60;
+  }
+  20%, 24%, 55% { 
+    text-shadow: none;
+  }
+}
     
     /* Avoid scrollbars for PDF export */
     body {

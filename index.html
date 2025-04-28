@@ -112,6 +112,18 @@
       border-radius: 2.5rem;
       transition: background .3s;
     }
+    /* Enlarged headline size matching first example */
+    @media (max-width: 768px) {
+        .headline-size {
+            font-size: 4.5rem !important; /* Much larger for mobile */
+        }
+    }
+    
+    @media (min-width: 769px) {
+        .headline-size {
+            font-size: 8rem !important; /* Dramatically larger for desktop */
+        }
+    }
     /* animations */
     .scroll-fade {
       opacity: 0;
@@ -153,9 +165,6 @@
     @media (max-width: 500px) {
       .mad-section {
         padding: 1.25rem 0.3rem;
-      }
-      .headline-glow {
-        font-size: 1.2rem !important;
       }
       .logo-gradient {
         font-size: 1.8rem !important;
@@ -214,11 +223,11 @@
   <!-- Hero Section -->
 <section id="hero" class="pt-8 min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8">
   
-<h1 class="headline-glow font-extrabold leading-tight mb-2 z-10 text-[2.4rem] md:text-[5rem] tracking-wider"
+<h1 class="headline-glow headline-size font-extrabold leading-tight mb-2 z-10 tracking-wider"
      style="font-family:'Bebas Neue',sans-serif;">Mad Minds.<br class="md:hidden"> Measurable Results.</h1>
-      <div class="sub-glow text-xl sm:text-2xl mt-6 max-w-2xl mx-auto">
-        We’re not your average marketers. We’re Madketers.<br>
-        A high-functioning squad of ex-big-agency pros who mix bold content, automation wizardry, and surgical ad strategy to create performance marketing that doesn’t just perform—it performs like hell.
+      <div class="sub-glow text-xl md:text-2xl mt-6 max-w-2xl mx-auto">
+        We're not your average marketers. We're Madketers.<br>
+        A high-functioning squad of ex-big-agency pros who mix bold content, automation wizardry, and surgical ad strategy to create performance marketing that doesn't just perform—it performs like hell.
       </div>
       <div class="flex flex-col sm:flex-row gap-3 mt-8 mb-3 justify-center">
         <a href="#contact" class="form-ctabtn text-base shadow-md hover:scale-105 transition">🚀 Get My Growth Plan</a>
@@ -248,7 +257,7 @@
       <div class="mad-card flex flex-col items-center text-center shadow scroll-fade">
         <span class="text-3xl mb-2 text-neon-orange"><i class="fas fa-chess-knight"></i></span>
         <div class="font-bold text-lg">Strategic Planning</div>
-        <div class="mt-1 text-gray-200">We don’t “ideate.” We orchestrate attacks. Funnel plans so smart they could outwit your competitor’s CMO.</div>
+        <div class="mt-1 text-gray-200">We don't "ideate." We orchestrate attacks. Funnel plans so smart they could outwit your competitor's CMO.</div>
       </div>
       <div class="mad-card flex flex-col items-center text-center shadow scroll-fade">
         <span class="text-3xl mb-2 text-neon-blue"><i class="fas fa-chart-line"></i></span>
@@ -262,13 +271,13 @@
       </div>
       <div class="mad-card flex flex-col items-center text-center shadow scroll-fade md:col-span-2">
         <span class="text-3xl mb-2 text-fuchsia-400"><i class="fas fa-bomb"></i></span>
-        <div class="font-bold text-lg">Content That’s Not Boring</div>
-        <div class="mt-1 text-gray-200">We don’t make “posts.” We make scroll assassins. Bold. Weird. Sticky. Branded like it’s your religion.</div>
+        <div class="font-bold text-lg">Content That's Not Boring</div>
+        <div class="mt-1 text-gray-200">We don't make "posts." We make scroll assassins. Bold. Weird. Sticky. Branded like it's your religion.</div>
       </div>
       <div class="mad-card flex flex-col items-center text-center shadow scroll-fade md:col-span-1">
         <span class="text-3xl mb-2 text-blue-400"><i class="fas fa-rocket"></i></span>
         <div class="font-bold text-lg">Platform-First Execution</div>
-        <div class="mt-1 text-gray-200">Madketers speak fluent Meta, Google, LinkedIn, and TikTok. We don’t guess—we optimize by the minute.</div>
+        <div class="mt-1 text-gray-200">Madketers speak fluent Meta, Google, LinkedIn, and TikTok. We don't guess—we optimize by the minute.</div>
       </div>
     </div>
     <div class="mt-7 relative">
@@ -282,7 +291,7 @@
   </section>
   <!-- How We Work Section -->
   <section id="how-we-work" class="mad-section mt-8">
-    <h2 class="headline-glow text-2xl md:text-3xl font-extrabold flex items-center mb-8"><span class="text-pink-400 mr-2"><i class="fas fa-microscope"></i></span> The Mad Method: We’re Not Here to Test. We’re Here to Win.</h2>
+    <h2 class="headline-glow text-2xl md:text-3xl font-extrabold flex items-center mb-8"><span class="text-pink-400 mr-2"><i class="fas fa-microscope"></i></span> The Mad Method: We're Not Here to Test. We're Here to Win.</h2>
     <div class="flex flex-col md:flex-row items-center gap-8">
       <div class="flex-1 flex flex-col max-w-lg gap-7">
         <!-- Timeline step 1 -->
@@ -306,7 +315,7 @@
           <div class="timeline-bar w-3.5 h-3.5"></div>
           <div>
             <div class="font-semibold text-lg text-neon-green">Launch & Loop</div>
-            <div class="text-gray-200 text-sm mt-1">We don’t “set and forget.” We optimize, tweak, and tweak again till it’s a beast.</div>
+            <div class="text-gray-200 text-sm mt-1">We don't "set and forget." We optimize, tweak, and tweak again till it's a beast.</div>
           </div>
         </div>
         <!-- step 4 -->
@@ -314,7 +323,7 @@
           <div class="timeline-bar w-3.5 h-3.5"></div>
           <div>
             <div class="font-semibold text-lg text-fuchsia-400">Scale, Baby, Scale</div>
-            <div class="text-gray-200 text-sm mt-1">This is where it gets mad. You’ll start needing bigger spreadsheets.</div>
+            <div class="text-gray-200 text-sm mt-1">This is where it gets mad. You'll start needing bigger spreadsheets.</div>
           </div>
         </div>
       </div>
@@ -332,8 +341,8 @@
     <div class="grid md:grid-cols-2 gap-6 items-center">
       <div>
         <p class="text-lg text-gray-200 mb-5">
-          We’re not fresh grads who just discovered “hook, story, offer.” We’re a rogue team of marketers who’ve run 9-figure funnels, scaled D2C monsters, and made enterprise brands act like creators.<br><br>
-          You don’t just get an account manager. You get a squad of ex-agency, ex-brand, ex-corporate rebels who actually know what they’re doing.
+          We're not fresh grads who just discovered "hook, story, offer." We're a rogue team of marketers who've run 9-figure funnels, scaled D2C monsters, and made enterprise brands act like creators.<br><br>
+          You don't just get an account manager. You get a squad of ex-agency, ex-brand, ex-corporate rebels who actually know what they're doing.
         </p>
         <a href="#contact" class="form-ctabtn text-base shadow-md hover:scale-105 transition">💬 Book a Mad Strategy Call</a>
       </div>
@@ -363,7 +372,7 @@
   <section id="proof" class="mad-section mt-8">
     <h2 class="headline-glow text-2xl md:text-3xl font-extrabold mb-7 flex items-center gap-2">
       <span class="text-yellow-400"><i class="fas fa-chart-bar"></i></span>
-      The Madness Works. Here’s Proof.
+      The Madness Works. Here's Proof.
     </h2>
     <div class="grid md:grid-cols-3 gap-6 mb-6">
       <div class="mad-card flex flex-col items-start scroll-fade">
@@ -389,25 +398,25 @@
     </div>
     <!-- Short testimonials -->
     <div class="flex flex-col md:flex-row gap-6 items-start mt-7">
-      <blockquote class="testimonial-card scroll-fade">“They’re mad, but in a genius way.” <span class="not-italic font-bold text-neon-orange">- Client</span></blockquote>
-      <blockquote class="testimonial-card scroll-fade">“We gave them our ad account. Now we give them credit for our revenue.” 💸</blockquote>
-      <blockquote class="testimonial-card scroll-fade">“Madketers made us believe in Instagram again. And therapy.” 🤡</blockquote>
+      <blockquote class="testimonial-card scroll-fade">"They're mad, but in a genius way." <span class="not-italic font-bold text-neon-orange">- Client</span></blockquote>
+      <blockquote class="testimonial-card scroll-fade">"We gave them our ad account. Now we give them credit for our revenue." 💸</blockquote>
+      <blockquote class="testimonial-card scroll-fade">"Madketers made us believe in Instagram again. And therapy." 🤡</blockquote>
     </div>
   </section>
   <!-- Testimonials Carousel Simplified -->
   <section id="testimonials" class="mad-section mt-8">
-    <h2 class="headline-glow text-2xl md:text-3xl font-extrabold mb-3"><span class="text-teal-400"><i class="fas fa-laugh-beam"></i></span> You’ll Laugh. You’ll Cry. You’ll Hit Record Sales.</h2>
+    <h2 class="headline-glow text-2xl md:text-3xl font-extrabold mb-3"><span class="text-teal-400"><i class="fas fa-laugh-beam"></i></span> You'll Laugh. You'll Cry. You'll Hit Record Sales.</h2>
     <div class="flex flex-wrap gap-5 justify-center">
-      <div class="testimonial-card w-72">“We gave them our ad account. Now we give them credit for our revenue.” 💸</div>
-      <div class="testimonial-card w-72">“Madketers made us believe in Instagram again. And therapy.” 🤡</div>
-      <div class="testimonial-card w-72">“Crazy ideas. Crazy results. 10/10.” 🔥</div>
+      <div class="testimonial-card w-72">"We gave them our ad account. Now we give them credit for our revenue." 💸</div>
+      <div class="testimonial-card w-72">"Madketers made us believe in Instagram again. And therapy." 🤡</div>
+      <div class="testimonial-card w-72">"Crazy ideas. Crazy results. 10/10." 🔥</div>
     </div>
   </section>
   <!-- Contact Form Section -->
   <section id="contact" class="mad-section mt-8">
     <h2 class="headline-glow text-2xl md:text-3xl font-extrabold mb-4"><span class="text-red-400"><i class="fas fa-envelope-open-text"></i></span> Ready to Scale With the Mad Ones?</h2>
     <p class="text-gray-200 mb-7 max-w-2xl">🔥 Get a Free 30-Min Funnel Breakdown<br>
-      We’ll audit your current setup, and send you a breakdown of what’s working, what’s not, and how to fix it — no fluff.
+      We'll audit your current setup, and send you a breakdown of what's working, what's not, and how to fix it — no fluff.
     </p>
     <form class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto bg-[#17203b] bg-opacity-90 rounded-2xl p-7" autocomplete="off" novalidate>
       <div class="flex flex-col">
@@ -433,7 +442,7 @@
         </select>
       </div>
       <div class="flex flex-col md:col-span-2">
-        <label for="challenge" class="form-label mb-2">What’s your biggest marketing challenge?</label>
+        <label for="challenge" class="form-label mb-2">What's your biggest marketing challenge?</label>
         <textarea id="challenge" name="challenge" required rows="3" class="resize-none rounded-md bg-[#223459] px-4 py-2 text-lg text-white focus:outline-none focus:ring-2 focus:ring-neon-orange transition" placeholder="Keeping up with content? Ads not scaling? Attribution pain?"></textarea>
       </div>
       <div class="flex justify-center md:col-span-2 mt-2">
@@ -445,7 +454,7 @@
   <footer class="mt-12 pb-10">
     <div class="flex flex-col items-center">
       <div class="logo-gradient text-3xl mb-2">MADKETERS</div>
-      <div class="font-semibold mb-2 px-4 text-center text-white text-opacity-90">And if you’re still scrolling, maybe you're ready to stop playing it safe.</div>
+      <div class="font-semibold mb-2 px-4 text-center text-white text-opacity-90">And if you're still scrolling, maybe you're ready to stop playing it safe.</div>
       <div class="flex flex-col md:flex-row items-center justify-center gap-6 py-3 mb-3 text-sm uppercase text-gray-300 font-semibold">
         <div class="flex gap-5">
           <a href="#hero" class="hover:text-neon-orange">Home</a>
@@ -510,5 +519,4 @@
     });
   </script>
 </body>
-  </div>
 </html>

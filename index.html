@@ -28,6 +28,7 @@
       --light-darker-bg: #e2e8f0;
       --light-card-bg: #ffffff;
       --dark-text: #1e293b;
+      --light-text-secondary: #475569; /* Added for better contrast in light mode */
     }
     
     body {
@@ -71,7 +72,7 @@
     }
     
     .light-theme input::placeholder, .light-theme textarea::placeholder {
-      color: #94a3b8;
+      color: #64748b; /* Darker placeholder for better visibility in light mode */
     }
     
     .light-theme .form-label {
@@ -81,6 +82,11 @@
     .light-theme .testimonial-card {
       background-color: #f8fafc;
       border-left: 4px solid var(--blue);
+      color: var(--dark-text); /* Ensure text is dark in light mode */
+    }
+    
+    .light-theme .text-gray-300 {
+      color: var(--light-text-secondary) !important; /* Override Tailwind for better contrast */
     }
     
     /* Common elements */
@@ -94,6 +100,14 @@
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+    
+    .light-theme .gradient-text {
+      background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: brightness(0.85); /* Make gradient slightly darker in light mode */
     }
     
     .gradient-border {
@@ -143,10 +157,16 @@
     }
     
     .mad-section {
-      padding: 5rem 1.5rem;
+      padding: 4rem 1rem;
       max-width: 1200px;
       margin: 0 auto;
       position: relative;
+    }
+    
+    @media (max-width: 640px) {
+      .mad-section {
+        padding: 3rem 1rem;
+      }
     }
     
     .mad-card {
@@ -265,11 +285,20 @@
       background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
       color: #ffffff;
       font-weight: bold;
-      padding: 0.8rem 2.2rem;
+      padding: 0.8rem 1.5rem;
       border-radius: 2.5rem;
       transition: all 0.3s;
       position: relative;
       overflow: hidden;
+      width: 100%;
+      text-align: center;
+    }
+    
+    @media (min-width: 640px) {
+      .form-ctabtn {
+        width: auto;
+        padding: 0.8rem 2.2rem;
+      }
     }
     
     .form-ctabtn:hover {
@@ -296,6 +325,7 @@
     .form-ctabtn span {
       position: relative;
       z-index: 1;
+      white-space: nowrap;
     }
     
     .cursor-glow {
@@ -351,6 +381,12 @@
       width: 100%;
       height: 100%;
       background: inherit;
+    }
+
+    @media (max-width: 640px) {
+      .glitch::before, .glitch::after {
+        display: none; /* Disable glitch on small screens for better readability */
+      }
     }
 
     .glitch::before {
@@ -416,6 +452,14 @@
       animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
     }
     
+    @media (max-width: 640px) {
+      .typing {
+        animation: none; /* Disable typing animation on mobile */
+        border-right: none;
+        white-space: normal;
+      }
+    }
+    
     @keyframes typing {
       from { width: 0 }
       to { width: 100% }
@@ -432,6 +476,35 @@
       font-size: 2rem;
       color: var(--cyan);
       display: inline-block;
+    }
+    
+    .light-theme .stat-counter {
+      color: var(--blue); /* Darker color in light mode for better visibility */
+    }
+    
+    /* Mobile optimizations */
+    @media (max-width: 640px) {
+      .text-4xl {
+        font-size: 2.5rem;
+      }
+      
+      h1, h2, h3 {
+        word-break: break-word;
+      }
+      
+      .process-content {
+        max-width: calc(100% - 5rem);
+      }
+      
+      .typing-container {
+        overflow: visible;
+      }
+      
+      .hero-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
     }
     
     /* For PDF optimization */
@@ -482,7 +555,7 @@
     <div class="container mx-auto px-4 flex items-center justify-between h-16">
       <!-- Logo (gradient style) -->
       <a href="#hero" class="flex-shrink-0 relative" aria-label="Madketers Home">
-        <div class="text-3xl font-bold gradient-text" style="letter-spacing:2px;">MADKETERS</div>
+        <div class="text-2xl sm:text-3xl font-bold gradient-text" style="letter-spacing:2px;">MADKETERS</div>
       </a>
       
       <!-- Desktop Links -->
@@ -574,22 +647,22 @@
   </nav>
   
   <!-- Hero Section -->
-  <section id="hero" class="pt-28 min-h-screen flex flex-col justify-center relative overflow-hidden">
+  <section id="hero" class="pt-24 sm:pt-28 min-h-screen flex flex-col justify-center relative overflow-hidden">
     <div class="backdrop"></div>
     <div class="mad-section">
       <div class="grid md:grid-cols-2 gap-8 items-center">
-        <div class="z-10">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6" data-aos="fade-right" data-aos-duration="1000">
+        <div class="z-10 hero-content-wrapper text-center sm:text-left">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6" data-aos="fade-right" data-aos-duration="1000">
             <span class="block mb-2 gradient-text" style="font-family:'Bebas Neue',sans-serif;">Mad Minds.</span>
             <span class="block gradient-text glitch" data-text="Measurable Marketing." style="font-family:'Bebas Neue',sans-serif;">Measurable Marketing.</span>
           </h1>
-          <div class="text-lg md:text-xl mb-8 typing-container overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+          <div class="text-base sm:text-lg md:text-xl mb-4 sm:mb-8 typing-container overflow-hidden" data-aos="fade-up" data-aos-delay="300">
             <p class="typing" style="animation-delay: 0.5s;">We're not your average marketers. We're Madketers.</p>
           </div>
-          <p class="text-gray-300 mb-8 max-w-md" data-aos="fade-up" data-aos-delay="600">
+          <p class="text-gray-300 mb-6 sm:mb-8 max-w-md mx-auto sm:mx-0" data-aos="fade-up" data-aos-delay="600">
             A team of passionate marketing specialists who blend creative strategy, data-driven insights, and cutting-edge execution to deliver marketing that doesn't just perform—it excels.
           </p>
-          <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="800">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center sm:justify-start" data-aos="fade-up" data-aos-delay="800">
             <a href="#contact" class="form-ctabtn transform hover:scale-105 transition-all duration-300">
               <span>🚀 Get Your Growth Plan</span>
             </a>
@@ -598,9 +671,9 @@
             </a>
           </div>
         </div>
-        <div class="relative z-10" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="relative z-10 mt-8 sm:mt-0" data-aos="zoom-in" data-aos-duration="1000">
           <!-- Marketing Dashboard Animation -->
-          <div class="relative w-full h-80 md:h-96 floating">
+          <div class="relative w-full h-64 sm:h-80 md:h-96 floating">
             <!-- Phone Mockup -->
             <div class="absolute inset-0 flex items-center justify-center">
               <!-- SVG Phone Mockup with Dashboard -->
@@ -678,26 +751,26 @@
       </div>
       
       <!-- Social Platforms Animation -->
-      <div class="mt-16 relative" data-aos="fade-up">
-        <p class="text-center text-sm text-gray-400 mb-6">TRUSTED BY MARKETERS ACROSS ALL PLATFORMS</p>
-        <div class="flex justify-center items-center gap-8 md:gap-16 flex-wrap">
+      <div class="mt-10 sm:mt-16 relative" data-aos="fade-up">
+        <p class="text-center text-xs sm:text-sm text-gray-400 mb-4 sm:mb-6">TRUSTED BY MARKETERS ACROSS ALL PLATFORMS</p>
+        <div class="flex justify-center items-center gap-4 sm:gap-8 md:gap-16 flex-wrap">
           <div class="w-8 h-8 relative group">
-            <i class="fab fa-facebook text-2xl text-gray-400 group-hover:text-[#1877F2] transition-colors duration-300 transform group-hover:scale-125"></i>
+            <i class="fab fa-facebook text-xl sm:text-2xl text-gray-400 group-hover:text-[#1877F2] transition-colors duration-300 transform group-hover:scale-125"></i>
           </div>
           <div class="w-8 h-8 relative group">
-            <i class="fab fa-google text-2xl text-gray-400 group-hover:text-[#EA4335] transition-colors duration-300 transform group-hover:scale-125"></i>
+            <i class="fab fa-google text-xl sm:text-2xl text-gray-400 group-hover:text-[#EA4335] transition-colors duration-300 transform group-hover:scale-125"></i>
           </div>
           <div class="w-8 h-8 relative group">
-            <i class="fab fa-instagram text-2xl text-gray-400 group-hover:text-[#E1306C] transition-colors duration-300 transform group-hover:scale-125"></i>
+            <i class="fab fa-instagram text-xl sm:text-2xl text-gray-400 group-hover:text-[#E1306C] transition-colors duration-300 transform group-hover:scale-125"></i>
           </div>
           <div class="w-8 h-8 relative group">
-            <i class="fab fa-linkedin text-2xl text-gray-400 group-hover:text-[#0A66C2] transition-colors duration-300 transform group-hover:scale-125"></i>
+            <i class="fab fa-linkedin text-xl sm:text-2xl text-gray-400 group-hover:text-[#0A66C2] transition-colors duration-300 transform group-hover:scale-125"></i>
           </div>
           <div class="w-8 h-8 relative group">
-            <i class="fab fa-tiktok text-2xl text-gray-400 group-hover:text-white transition-colors duration-300 transform group-hover:scale-125"></i>
+            <i class="fab fa-tiktok text-xl sm:text-2xl text-gray-400 group-hover:text-white transition-colors duration-300 transform group-hover:scale-125"></i>
           </div>
           <div class="w-8 h-8 relative group">
-            <i class="fab fa-twitter text-2xl text-gray-400 group-hover:text-[#1DA1F2] transition-colors duration-300 transform group-hover:scale-125"></i>
+            <i class="fab fa-twitter text-xl sm:text-2xl text-gray-400 group-hover:text-[#1DA1F2] transition-colors duration-300 transform group-hover:scale-125"></i>
           </div>
         </div>
       </div>
@@ -708,16 +781,16 @@
   <section id="services" class="relative">
     <div class="backdrop"></div>
     <div class="mad-section">
-      <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">
+      <div class="text-center mb-8 sm:mb-12" data-aos="fade-up">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 gradient-text">
           <i class="fas fa-brain mr-2"></i> What Happens When Marketers Go a Little Mad?
         </h2>
-        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+        <p class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto">
           We bring method to the madness with services designed to transform your marketing performance.
         </p>
       </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Service Card 1 -->
         <div class="mad-card gradient-border group relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan/5 to-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -798,7 +871,7 @@
         </div>
         
         <!-- Service Card 4 -->
-        <div class="mad-card gradient-border group relative overflow-hidden md:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="400">
+        <div class="mad-card gradient-border group relative overflow-hidden sm:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="400">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan/5 to-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div class="relative z-10">
             <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-cyan to-purple flex items-center justify-center mb-4 transform group-hover:rotate-6 transition-transform duration-300">
@@ -823,7 +896,7 @@
         </div>
         
         <!-- Service Card 5 -->
-        <div class="mad-card gradient-border group relative overflow-hidden lg:col-span-2" data-aos="fade-up" data-aos-delay="500">
+        <div class="mad-card gradient-border group relative overflow-hidden md:col-span-2 lg:col-span-2" data-aos="fade-up" data-aos-delay="500">
           <div class="absolute inset-0 bg-gradient-to-br from-blue/5 to-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div class="relative z-10">
             <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-blue to-cyan flex items-center justify-center mb-4 transform group-hover:rotate-6 transition-transform duration-300">
@@ -855,11 +928,11 @@
   <section id="process" class="relative">
     <div class="backdrop"></div>
     <div class="mad-section">
-      <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">
+      <div class="text-center mb-8 sm:mb-12" data-aos="fade-up">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 gradient-text">
           <i class="fas fa-cogs mr-2"></i> The Mad Method: Here to Deliver Results
         </h2>
-        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+        <p class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto">
           Our proven process combines creativity with data-driven decisions for maximum impact.
         </p>
       </div>
@@ -867,60 +940,60 @@
       <div class="flex flex-col lg:flex-row items-center gap-8">
         <div class="flex-1 order-2 lg:order-1">
           <!-- Process Steps Animation -->
-          <div class="relative py-8">
+          <div class="relative py-4 sm:py-8">
             <!-- Step 1 -->
-            <div class="flex items-start gap-6 mb-12 relative" data-aos="fade-right">
-              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-cyan to-blue flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue/20 z-10">
-                <span class="text-white text-xl font-bold">1</span>
+            <div class="flex items-start gap-4 sm:gap-6 mb-8 sm:mb-12 relative" data-aos="fade-right">
+              <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-cyan to-blue flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue/20 z-10">
+                <span class="text-white text-lg sm:text-xl font-bold">1</span>
               </div>
               <div class="process-content">
-                <h3 class="text-xl font-bold mb-2 gradient-text">Analyze & Discover</h3>
-                <p class="text-gray-300">
+                <h3 class="text-lg sm:text-xl font-bold mb-2 gradient-text">Analyze & Discover</h3>
+                <p class="text-gray-300 text-sm sm:text-base">
                   Deep dive into your data, audience, and competition to find opportunities others miss.
                 </p>
               </div>
               <!-- Animated connecting line -->
-              <div class="absolute top-16 left-8 w-0.5 h-16 bg-gradient-to-b from-blue to-purple opacity-30"></div>
+              <div class="absolute top-12 sm:top-16 left-6 sm:left-8 w-0.5 h-12 sm:h-16 bg-gradient-to-b from-blue to-purple opacity-30"></div>
             </div>
             
             <!-- Step 2 -->
-            <div class="flex items-start gap-6 mb-12 relative" data-aos="fade-right" data-aos-delay="200">
-              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue to-purple flex items-center justify-center flex-shrink-0 shadow-lg shadow-purple/20 z-10">
-                <span class="text-white text-xl font-bold">2</span>
+            <div class="flex items-start gap-4 sm:gap-6 mb-8 sm:mb-12 relative" data-aos="fade-right" data-aos-delay="200">
+              <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-blue to-purple flex items-center justify-center flex-shrink-0 shadow-lg shadow-purple/20 z-10">
+                <span class="text-white text-lg sm:text-xl font-bold">2</span>
               </div>
               <div class="process-content">
-                <h3 class="text-xl font-bold mb-2 gradient-text">Strategy Development</h3>
-                <p class="text-gray-300">
+                <h3 class="text-lg sm:text-xl font-bold mb-2 gradient-text">Strategy Development</h3>
+                <p class="text-gray-300 text-sm sm:text-base">
                   Custom marketing plans with precise targeting, compelling creatives, and clear conversion paths.
                 </p>
               </div>
               <!-- Animated connecting line -->
-              <div class="absolute top-16 left-8 w-0.5 h-16 bg-gradient-to-b from-purple to-cyan opacity-30"></div>
+              <div class="absolute top-12 sm:top-16 left-6 sm:left-8 w-0.5 h-12 sm:h-16 bg-gradient-to-b from-purple to-cyan opacity-30"></div>
             </div>
             
             <!-- Step 3 -->
-            <div class="flex items-start gap-6 mb-12 relative" data-aos="fade-right" data-aos-delay="400">
-              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple to-cyan flex items-center justify-center flex-shrink-0 shadow-lg shadow-cyan/20 z-10">
-                <span class="text-white text-xl font-bold">3</span>
+            <div class="flex items-start gap-4 sm:gap-6 mb-8 sm:mb-12 relative" data-aos="fade-right" data-aos-delay="400">
+              <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-purple to-cyan flex items-center justify-center flex-shrink-0 shadow-lg shadow-cyan/20 z-10">
+                <span class="text-white text-lg sm:text-xl font-bold">3</span>
               </div>
               <div class="process-content">
-                <h3 class="text-xl font-bold mb-2 gradient-text">Execute & Optimize</h3>
-                <p class="text-gray-300">
+                <h3 class="text-lg sm:text-xl font-bold mb-2 gradient-text">Execute & Optimize</h3>
+                <p class="text-gray-300 text-sm sm:text-base">
                   Disciplined implementation with constant monitoring and optimization to maximize performance.
                 </p>
               </div>
               <!-- Animated connecting line -->
-              <div class="absolute top-16 left-8 w-0.5 h-16 bg-gradient-to-b from-cyan to-blue opacity-30"></div>
+              <div class="absolute top-12 sm:top-16 left-6 sm:left-8 w-0.5 h-12 sm:h-16 bg-gradient-to-b from-cyan to-blue opacity-30"></div>
             </div>
             
             <!-- Step 4 -->
-            <div class="flex items-start gap-6" data-aos="fade-right" data-aos-delay="600">
-              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-cyan to-blue flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue/20 z-10">
-                <span class="text-white text-xl font-bold">4</span>
+            <div class="flex items-start gap-4 sm:gap-6" data-aos="fade-right" data-aos-delay="600">
+              <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-cyan to-blue flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue/20 z-10">
+                <span class="text-white text-lg sm:text-xl font-bold">4</span>
               </div>
               <div class="process-content">
-                <h3 class="text-xl font-bold mb-2 gradient-text">Scale & Grow</h3>
-                <p class="text-gray-300">
+                <h3 class="text-lg sm:text-xl font-bold mb-2 gradient-text">Scale & Grow</h3>
+                <p class="text-gray-300 text-sm sm:text-base">
                   Once we find what works, we expand and scale while maintaining efficiency and quality.
                 </p>
               </div>
@@ -930,7 +1003,7 @@
         
         <div class="flex-1 relative order-1 lg:order-2" data-aos="zoom-in">
           <!-- Process Visualization -->
-          <div class="relative w-full h-80 md:h-96 floating">
+          <div class="relative w-full h-64 sm:h-80 md:h-96 floating">
             <!-- Animated Marketing Funnel SVG -->
             <svg width="100%" height="100%" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
               <!-- Funnel Shape with gradient -->
@@ -989,19 +1062,19 @@
   <section id="team" class="relative">
     <div class="backdrop"></div>
     <div class="mad-section">
-      <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">
+      <div class="text-center mb-8 sm:mb-12" data-aos="fade-up">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 gradient-text">
           <i class="fas fa-user-astronaut mr-2"></i> Built by Marketing Experts Who Live for Results
         </h2>
-        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+        <p class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto">
           Meet the mad minds behind our marketing magic.
         </p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
         <!-- Team Member 1 -->
         <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-48 h-48 rounded-full relative mb-4 overflow-hidden gradient-border p-1 transform transition-transform duration-500 hover:scale-105">
+          <div class="w-36 h-36 sm:w-48 sm:h-48 rounded-full relative mb-4 overflow-hidden gradient-border p-1 transform transition-transform duration-500 hover:scale-105">
             <div class="w-full h-full rounded-full overflow-hidden">
               <!-- Team member image placeholder with animated gradient -->
               <div class="w-full h-full flex items-center justify-center relative overflow-hidden">
@@ -1025,7 +1098,7 @@
         
         <!-- Team Member 2 -->
         <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-48 h-48 rounded-full relative mb-4 overflow-hidden gradient-border p-1 transform transition-transform duration-500 hover:scale-105">
+          <div class="w-36 h-36 sm:w-48 sm:h-48 rounded-full relative mb-4 overflow-hidden gradient-border p-1 transform transition-transform duration-500 hover:scale-105">
             <div class="w-full h-full rounded-full overflow-hidden">
               <!-- Team member image placeholder with animated gradient -->
               <div class="w-full h-full flex items-center justify-center relative overflow-hidden">
@@ -1048,8 +1121,8 @@
         </div>
         
         <!-- Team Member 3 -->
-        <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
-          <div class="w-48 h-48 rounded-full relative mb-4 overflow-hidden gradient-border p-1 transform transition-transform duration-500 hover:scale-105">
+        <div class="flex flex-col items-center sm:col-span-2 md:col-span-1" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-36 h-36 sm:w-48 sm:h-48 rounded-full relative mb-4 overflow-hidden gradient-border p-1 transform transition-transform duration-500 hover:scale-105">
             <div class="w-full h-full rounded-full overflow-hidden">
               <!-- Team member image placeholder with animated gradient -->
               <div class="w-full h-full flex items-center justify-center relative overflow-hidden">
@@ -1078,26 +1151,26 @@
   <section id="results" class="relative">
     <div class="backdrop"></div>
     <div class="mad-section">
-      <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">
+      <div class="text-center mb-8 sm:mb-12" data-aos="fade-up">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 gradient-text">
           <i class="fas fa-chart-bar mr-2"></i> Our Madness Works. Here's Proof.
         </h2>
-        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+        <p class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto">
           Real results for real clients. No fluff, just performance.
         </p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-6 mb-12">
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8 sm:mb-12">
         <!-- Stat Card 1 -->
         <div class="mad-card gradient-border relative overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan/5 to-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div class="relative z-10">
-            <div class="stat-counter text-4xl font-bold mb-2" data-count="4.7">0</div>
-            <div class="text-xl font-bold gradient-text">X ROAS for E-commerce</div>
-            <p class="text-gray-300 mt-2">Achieved in just 45 days with our strategic approach</p>
+            <div class="stat-counter text-3xl sm:text-4xl font-bold mb-2" data-count="4.7">0</div>
+            <div class="text-lg sm:text-xl font-bold gradient-text">X ROAS for E-commerce</div>
+            <p class="text-gray-300 mt-2 text-sm sm:text-base">Achieved in just 45 days with our strategic approach</p>
           </div>
           <!-- Animated graph -->
-          <svg class="absolute bottom-2 right-2 w-20 h-20 opacity-20" viewBox="0 0 100 100" fill="none">
+          <svg class="absolute bottom-2 right-2 w-16 sm:w-20 h-16 sm:h-20 opacity-20" viewBox="0 0 100 100" fill="none">
             <path d="M10,90 L30,70 L50,50 L70,20 L90,10" stroke="url(#statGradient1)" stroke-width="3" class="svg-path"/>
             <defs>
               <linearGradient id="statGradient1" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
@@ -1112,12 +1185,12 @@
         <div class="mad-card gradient-border relative overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
           <div class="absolute inset-0 bg-gradient-to-br from-blue/5 to-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div class="relative z-10">
-            <div class="stat-counter text-4xl font-bold mb-2" data-count="60">0</div>
-            <div class="text-xl font-bold gradient-text">% Lower CPL</div>
-            <p class="text-gray-300 mt-2">For education client in a highly competitive market</p>
+            <div class="stat-counter text-3xl sm:text-4xl font-bold mb-2" data-count="60">0</div>
+            <div class="text-lg sm:text-xl font-bold gradient-text">% Lower CPL</div>
+            <p class="text-gray-300 mt-2 text-sm sm:text-base">For education client in a highly competitive market</p>
           </div>
           <!-- Animated chart -->
-          <svg class="absolute bottom-2 right-2 w-20 h-20 opacity-20" viewBox="0 0 100 100" fill="none">
+          <svg class="absolute bottom-2 right-2 w-16 sm:w-20 h-16 sm:h-20 opacity-20" viewBox="0 0 100 100" fill="none">
             <rect x="10" y="60" width="10" height="30" fill="url(#statGradient2)" class="svg-path"/>
             <rect x="30" y="40" width="10" height="50" fill="url(#statGradient2)" class="svg-path" style="animation-delay: 0.2s"/>
             <rect x="50" y="30" width="10" height="60" fill="url(#statGradient2)" class="svg-path" style="animation-delay: 0.4s"/>
@@ -1132,15 +1205,15 @@
         </div>
         
         <!-- Stat Card 3 -->
-        <div class="mad-card gradient-border relative overflow-hidden group" data-aos="fade-up" data-aos-delay="300">
+        <div class="mad-card gradient-border relative overflow-hidden group sm:col-span-2 md:col-span-1" data-aos="fade-up" data-aos-delay="300">
           <div class="absolute inset-0 bg-gradient-to-br from-purple/5 to-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div class="relative z-10">
-            <div class="stat-counter text-4xl font-bold mb-2" data-count="132">0</div>
-            <div class="text-xl font-bold gradient-text">% CTR Improvement</div>
-            <p class="text-gray-300 mt-2">Using our Creative Refresh System across ad platforms</p>
+            <div class="stat-counter text-3xl sm:text-4xl font-bold mb-2" data-count="132">0</div>
+            <div class="text-lg sm:text-xl font-bold gradient-text">% CTR Improvement</div>
+            <p class="text-gray-300 mt-2 text-sm sm:text-base">Using our Creative Refresh System across ad platforms</p>
           </div>
           <!-- Animated pie chart -->
-          <svg class="absolute bottom-2 right-2 w-20 h-20 opacity-20" viewBox="0 0 100 100" fill="none">
+          <svg class="absolute bottom-2 right-2 w-16 sm:w-20 h-16 sm:h-20 opacity-20" viewBox="0 0 100 100" fill="none">
             <circle cx="50" cy="50" r="40" stroke="var(--purple)" stroke-width="3" fill="none" opacity="0.3" />
             <path d="M50,50 L50,10 A40,40 0 1,1 10,50 Z" fill="url(#statGradient3)" class="svg-path"/>
             <defs>
@@ -1154,34 +1227,34 @@
       </div>
       
       <!-- Client logos -->
-      <div class="mb-12" data-aos="fade-up">
-        <p class="text-center text-sm text-gray-400 mb-6">TRUSTED BY INNOVATIVE BRANDS</p>
-        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-          <div class="w-24 h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
+      <div class="mb-8 sm:mb-12" data-aos="fade-up">
+        <p class="text-center text-xs sm:text-sm text-gray-400 mb-4 sm:mb-6">TRUSTED BY INNOVATIVE BRANDS</p>
+        <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-8 md:gap-12">
+          <div class="w-16 sm:w-24 h-12 sm:h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
             <svg viewBox="0 0 100 40" width="100%" height="100%">
               <rect x="10" y="10" width="80" height="20" rx="5" stroke="var(--cyan)" stroke-width="2" fill="none" class="svg-path"/>
               <text x="50" y="25" fill="white" font-size="12" text-anchor="middle" font-family="Arial" class="svg-path" style="animation-delay: 0.2s">BRAND 1</text>
             </svg>
           </div>
-          <div class="w-24 h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
+          <div class="w-16 sm:w-24 h-12 sm:h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
             <svg viewBox="0 0 100 40" width="100%" height="100%">
               <circle cx="50" cy="20" r="15" stroke="var(--blue)" stroke-width="2" fill="none" class="svg-path"/>
               <text x="50" y="25" fill="white" font-size="12" text-anchor="middle" font-family="Arial" class="svg-path" style="animation-delay: 0.2s">BRAND 2</text>
             </svg>
           </div>
-          <div class="w-24 h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
+          <div class="w-16 sm:w-24 h-12 sm:h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
             <svg viewBox="0 0 100 40" width="100%" height="100%">
               <polygon points="20,10 80,10 90,20 80,30 20,30 10,20" stroke="var(--purple)" stroke-width="2" fill="none" class="svg-path"/>
               <text x="50" y="25" fill="white" font-size="12" text-anchor="middle" font-family="Arial" class="svg-path" style="animation-delay: 0.2s">BRAND 3</text>
             </svg>
           </div>
-          <div class="w-24 h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
+          <div class="w-16 sm:w-24 h-12 sm:h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
             <svg viewBox="0 0 100 40" width="100%" height="100%">
               <path d="M10,20 Q50,5 90,20 Q50,35 10,20" stroke="var(--cyan)" stroke-width="2" fill="none" class="svg-path"/>
               <text x="50" y="22" fill="white" font-size="12" text-anchor="middle" font-family="Arial" class="svg-path" style="animation-delay: 0.2s">BRAND 4</text>
             </svg>
           </div>
-          <div class="w-24 h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
+          <div class="w-16 sm:w-24 h-12 sm:h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
             <svg viewBox="0 0 100 40" width="100%" height="100%">
               <rect x="20" y="10" width="60" height="20" rx="10" stroke="var(--blue)" stroke-width="2" fill="none" class="svg-path"/>
               <text x="50" y="25" fill="white" font-size="12" text-anchor="middle" font-family="Arial" class="svg-path" style="animation-delay: 0.2s">BRAND 5</text>
@@ -1191,21 +1264,21 @@
       </div>
       
       <!-- Testimonials -->
-      <div class="grid md:grid-cols-2 gap-6" data-aos="fade-up">
+      <div class="grid sm:grid-cols-2 gap-6" data-aos="fade-up">
         <div class="testimonial-card" data-aos="fade-right" data-aos-delay="100">
-          <p class="mb-4">"They approach marketing with a perfect blend of creativity and analytical precision. Our conversions increased by 43% in the first quarter."</p>
+          <p class="mb-4 text-sm sm:text-base">"They approach marketing with a perfect blend of creativity and analytical precision. Our conversions increased by 43% in the first quarter."</p>
           <div class="font-bold text-right gradient-text">- E-commerce Client</div>
         </div>
         <div class="testimonial-card" data-aos="fade-left" data-aos-delay="200">
-          <p class="mb-4">"Madketers transformed our digital presence and delivered tangible business results. Their strategic approach and attention to detail are unmatched."</p>
+          <p class="mb-4 text-sm sm:text-base">"Madketers transformed our digital presence and delivered tangible business results. Their strategic approach and attention to detail are unmatched."</p>
           <div class="font-bold text-right gradient-text">- B2B Client</div>
         </div>
         <div class="testimonial-card" data-aos="fade-right" data-aos-delay="300">
-          <p class="mb-4">"Their team's passion for marketing is matched only by their commitment to our success. We've seen consistent growth since partnering with them."</p>
+          <p class="mb-4 text-sm sm:text-base">"Their team's passion for marketing is matched only by their commitment to our success. We've seen consistent growth since partnering with them."</p>
           <div class="font-bold text-right gradient-text">- Retail Client</div>
         </div>
         <div class="testimonial-card" data-aos="fade-left" data-aos-delay="400">
-          <p class="mb-4">"Finally, a marketing team that actually delivers on their promises. The data-driven approach combined with creative execution is refreshing."</p>
+          <p class="mb-4 text-sm sm:text-base">"Finally, a marketing team that actually delivers on their promises. The data-driven approach combined with creative execution is refreshing."</p>
           <div class="font-bold text-right gradient-text">- SaaS Client</div>
         </div>
       </div>
@@ -1216,21 +1289,21 @@
   <section id="contact" class="relative">
     <div class="backdrop"></div>
     <div class="mad-section">
-      <div class="text-center mb-8" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">
+      <div class="text-center mb-6 sm:mb-8" data-aos="fade-up">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 gradient-text">
           <i class="fas fa-paper-plane mr-2"></i> Ready to Work with the Mad Ones?
         </h2>
-        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+        <p class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto">
           🔍 Get a Free Marketing Assessment<br>
           We'll analyze your current marketing efforts and provide actionable insights on improvements that can drive better results.
         </p>
       </div>
       
       <div class="max-w-3xl mx-auto">
-        <form class="mad-card gradient-border p-8" data-aos="fade-up">
-          <div class="grid md:grid-cols-2 gap-6">
+        <form class="mad-card gradient-border p-5 sm:p-8" data-aos="fade-up">
+          <div class="grid sm:grid-cols-2 gap-5 sm:gap-6">
             <div class="flex flex-col">
-              <label for="name" class="text-lg font-semibold mb-2 gradient-text">Name</label>
+              <label for="name" class="text-base sm:text-lg font-semibold mb-2 gradient-text">Name</label>
               <input 
                 type="text" 
                 id="name" 
@@ -1241,7 +1314,7 @@
             </div>
             
             <div class="flex flex-col">
-              <label for="email" class="text-lg font-semibold mb-2 gradient-text">Email</label>
+              <label for="email" class="text-base sm:text-lg font-semibold mb-2 gradient-text">Email</label>
               <input 
                 type="email" 
                 id="email" 
@@ -1252,7 +1325,7 @@
             </div>
             
             <div class="flex flex-col">
-              <label for="website" class="text-lg font-semibold mb-2 gradient-text">Company Website</label>
+              <label for="website" class="text-base sm:text-lg font-semibold mb-2 gradient-text">Company Website</label>
               <input 
                 type="url" 
                 id="website" 
@@ -1262,7 +1335,7 @@
             </div>
             
             <div class="flex flex-col">
-              <label for="budget" class="text-lg font-semibold mb-2 gradient-text">Marketing Budget</label>
+              <label for="budget" class="text-base sm:text-lg font-semibold mb-2 gradient-text">Marketing Budget</label>
               <select 
                 id="budget" 
                 class="bg-[rgba(30,22,53,0.4)] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan focus:ring-2 focus:ring-cyan/50 transition-all duration-300"
@@ -1276,8 +1349,8 @@
               </select>
             </div>
             
-            <div class="flex flex-col md:col-span-2">
-              <label for="challenge" class="text-lg font-semibold mb-2 gradient-text">Biggest Marketing Challenge</label>
+            <div class="flex flex-col sm:col-span-2">
+              <label for="challenge" class="text-base sm:text-lg font-semibold mb-2 gradient-text">Biggest Marketing Challenge</label>
               <textarea 
                 id="challenge" 
                 rows="4" 
@@ -1287,10 +1360,10 @@
               ></textarea>
             </div>
             
-            <div class="md:col-span-2 flex justify-center mt-4">
+            <div class="sm:col-span-2 flex justify-center mt-4">
               <button 
                 type="submit" 
-                class="form-ctabtn group relative overflow-hidden px-8 py-4 text-lg"
+                class="form-ctabtn group relative overflow-hidden px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg"
               >
                 <span class="relative z-10 flex items-center gap-2">
                   <i class="fas fa-rocket"></i> Let's Create Something Amazing
@@ -1305,20 +1378,20 @@
   </section>
   
   <!-- Footer -->
-  <footer class="relative py-12 overflow-hidden">
+  <footer class="relative py-8 sm:py-12 overflow-hidden">
     <div class="backdrop"></div>
     <div class="container mx-auto px-4">
       <div class="flex flex-col items-center">
-        <a href="#hero" class="text-4xl font-bold gradient-text mb-6" style="letter-spacing:2px;">MADKETERS</a>
+        <a href="#hero" class="text-3xl sm:text-4xl font-bold gradient-text mb-4 sm:mb-6" style="letter-spacing:2px;">MADKETERS</a>
         
-        <div class="max-w-lg text-center mb-8">
-          <p class="text-gray-300">Marketing with purpose, passion, and a touch of madness. We drive results through strategic thinking, creative execution, and data-driven optimization.</p>
+        <div class="max-w-lg text-center mb-6 sm:mb-8">
+          <p class="text-gray-300 text-sm sm:text-base">Marketing with purpose, passion, and a touch of madness. We drive results through strategic thinking, creative execution, and data-driven optimization.</p>
         </div>
         
-        <div class="flex flex-wrap justify-center gap-8 mb-8">
+        <div class="flex flex-wrap justify-center gap-6 sm:gap-8 mb-6 sm:mb-8">
           <div class="flex flex-col items-center">
-            <h4 class="font-bold text-lg mb-3 gradient-text">Services</h4>
-            <ul class="text-gray-300 space-y-2 text-center">
+            <h4 class="font-bold text-base sm:text-lg mb-2 sm:mb-3 gradient-text">Services</h4>
+            <ul class="text-gray-300 space-y-1 sm:space-y-2 text-center text-sm sm:text-base">
               <li><a href="#services" class="hover:text-cyan transition-colors duration-300">Strategic Planning</a></li>
               <li><a href="#services" class="hover:text-cyan transition-colors duration-300">Data & Analytics</a></li>
               <li><a href="#services" class="hover:text-cyan transition-colors duration-300">Social Media</a></li>
@@ -1326,8 +1399,8 @@
           </div>
           
           <div class="flex flex-col items-center">
-            <h4 class="font-bold text-lg mb-3 gradient-text">Company</h4>
-            <ul class="text-gray-300 space-y-2 text-center">
+            <h4 class="font-bold text-base sm:text-lg mb-2 sm:mb-3 gradient-text">Company</h4>
+            <ul class="text-gray-300 space-y-1 sm:space-y-2 text-center text-sm sm:text-base">
               <li><a href="#team" class="hover:text-cyan transition-colors duration-300">Our Team</a></li>
               <li><a href="#results" class="hover:text-cyan transition-colors duration-300">Results</a></li>
               <li><a href="#process" class="hover:text-cyan transition-colors duration-300">Process</a></li>
@@ -1335,8 +1408,8 @@
           </div>
           
           <div class="flex flex-col items-center">
-            <h4 class="font-bold text-lg mb-3 gradient-text">Connect</h4>
-            <ul class="text-gray-300 space-y-2 text-center">
+            <h4 class="font-bold text-base sm:text-lg mb-2 sm:mb-3 gradient-text">Connect</h4>
+            <ul class="text-gray-300 space-y-1 sm:space-y-2 text-center text-sm sm:text-base">
               <li><a href="#contact" class="hover:text-cyan transition-colors duration-300">Contact Us</a></li>
               <li><a href="#" class="hover:text-cyan transition-colors duration-300">LinkedIn</a></li>
               <li><a href="#" class="hover:text-cyan transition-colors duration-300">Instagram</a></li>
@@ -1344,22 +1417,22 @@
           </div>
         </div>
         
-        <div class="flex gap-6 mb-8">
-          <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center border border-gray-700 hover:border-cyan hover:text-cyan transition-all duration-300">
+        <div class="flex gap-4 sm:gap-6 mb-6 sm:mb-8">
+          <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border border-gray-700 hover:border-cyan hover:text-cyan transition-all duration-300">
             <i class="fab fa-linkedin-in"></i>
           </a>
-          <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center border border-gray-700 hover:border-purple hover:text-purple transition-all duration-300">
+          <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border border-gray-700 hover:border-purple hover:text-purple transition-all duration-300">
             <i class="fab fa-instagram"></i>
           </a>
-          <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center border border-gray-700 hover:border-blue hover:text-blue transition-all duration-300">
+          <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border border-gray-700 hover:border-blue hover:text-blue transition-all duration-300">
             <i class="fab fa-twitter"></i>
           </a>
-          <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center border border-gray-700 hover:border-cyan hover:text-cyan transition-all duration-300">
+          <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border border-gray-700 hover:border-cyan hover:text-cyan transition-all duration-300">
             <i class="fas fa-envelope"></i>
           </a>
         </div>
         
-        <div class="text-sm text-gray-500">
+        <div class="text-xs sm:text-sm text-gray-500">
           &copy; 2023 Madketers. All rights reserved.
         </div>
       </div>
@@ -1377,7 +1450,8 @@
         duration: 800,
         once: false,
         mirror: true,
-        offset: 50
+        offset: 50,
+        disable: window.innerWidth < 640 ? true : false // Disable animations on very small screens for better performance
       });
       
       // Theme Toggle
@@ -1417,51 +1491,65 @@
       
       mobileMenuBtn.addEventListener('click', function() {
         mobileMenu.classList.toggle('hidden');
-        mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
-        mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+        const icon = mobileMenuBtn.querySelector('i');
+        if (icon.classList.contains('fa-bars')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
       });
       
       // Close mobile menu when clicking links
       document.querySelectorAll('#mobile-menu a').forEach(function(link) {
         link.addEventListener('click', function() {
           mobileMenu.classList.add('hidden');
-          mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-          mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+          const icon = mobileMenuBtn.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
         });
       });
       
-      // Cursor glow effect
-      const cursorGlow = document.getElementById('cursor-glow');
+      // Only enable cursor glow on non-touch devices
+      const isTouchDevice = 'ontouchstart' in document.documentElement;
       
-      document.addEventListener('mousemove', function(e) {
-        cursorGlow.style.left = e.clientX + 'px';
-        cursorGlow.style.top = e.clientY + 'px';
-        cursorGlow.style.opacity = '1';
-      });
-      
-      document.addEventListener('mouseleave', function() {
-        cursorGlow.style.opacity = '0';
-      });
-      
-      // Parallax effect
-      const parallaxElements = document.querySelectorAll('.parallax');
-      
-      document.addEventListener('mousemove', function(e) {
-        const mouseX = e.clientX / window.innerWidth - 0.5;
-        const mouseY = e.clientY / window.innerHeight - 0.5;
+      if (!isTouchDevice) {
+        // Cursor glow effect
+        const cursorGlow = document.getElementById('cursor-glow');
         
-        parallaxElements.forEach(function(el) {
-          const depth = parseFloat(el.getAttribute('data-depth') || 0.1);
-          const translateX = mouseX * depth * 50;
-          const translateY = mouseY * depth * 50;
-          
-          el.style.transform = `translate(${translateX}px, ${translateY}px)`;
+        document.addEventListener('mousemove', function(e) {
+          cursorGlow.style.left = e.clientX + 'px';
+          cursorGlow.style.top = e.clientY + 'px';
+          cursorGlow.style.opacity = '1';
         });
-      });
+        
+        document.addEventListener('mouseleave', function() {
+          cursorGlow.style.opacity = '0';
+        });
+        
+        // Parallax effect
+        const parallaxElements = document.querySelectorAll('.parallax');
+        
+        document.addEventListener('mousemove', function(e) {
+          const mouseX = e.clientX / window.innerWidth - 0.5;
+          const mouseY = e.clientY / window.innerHeight - 0.5;
+          
+          parallaxElements.forEach(function(el) {
+            const depth = parseFloat(el.getAttribute('data-depth') || 0.1);
+            const translateX = mouseX * depth * 50;
+            const translateY = mouseY * depth * 50;
+            
+            el.style.transform = `translate(${translateX}px, ${translateY}px)`;
+          });
+        });
+      }
+      
+      // Reduce firefly count on mobile
+      const fireflyCount = window.innerWidth < 768 ? 10 : 20;
       
       // Fireflies animation
       const firefliesContainer = document.getElementById('fireflies-container');
-      const fireflyCount = 20;
       
       for (let i = 0; i < fireflyCount; i++) {
         const firefly = document.createElement('div');
@@ -1532,6 +1620,20 @@
       // Form validation
       const form = document.querySelector('form');
       if (form) {
+        // Add a shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+          }
+          .animate-shake {
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+          }
+        `;
+        document.head.appendChild(style);
+        
         form.addEventListener('submit', function(e) {
           e.preventDefault();
           
@@ -1574,6 +1676,28 @@
           });
         });
       }
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            // Offset for the fixed header
+            const headerOffset = 80;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
     });
   </script>
 </body>

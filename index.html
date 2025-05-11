@@ -2,592 +2,1579 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mad Minds. Measurable Results.</title>
-  <!-- Tailwind CSS CDN -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mad Minds. Measurable Marketing. | Madketers</title>
+  <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <!-- Google Fonts: Inter + Bebas Neue -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Bebas+Neue:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome for Icons -->
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+  <!-- Animation Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     :root {
-      --neon-orange: #FF611D;
-      --neon-blue: #00BFFF;
-      --neon-green: #00FFD0;
-      --deep-navy: #101828;
+      --cyan: #6AEFFD;
+      --blue: #2B6EED;
+      --purple: #7C58F7;
+      --dark-bg: #0c0a16;
+      --darker-bg: #080612;
+      --card-bg: rgba(30, 22, 53, 0.3);
+      --light-text: #f8fafc;
+      --border-glow: 0 0 15px rgba(106, 239, 253, 0.5);
+      
+      /* Light Theme Colors */
+      --light-bg: #f8fafc;
+      --light-darker-bg: #e2e8f0;
+      --light-card-bg: #ffffff;
+      --dark-text: #1e293b;
     }
-    html, body {
-      background: #101828;
-      color: white;
-      font-family: 'Inter', Arial, sans-serif;
-      scroll-behavior: smooth;
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--light-text);
+      overflow-x: hidden;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      background-image: 
+        radial-gradient(circle at 20% 20%, rgba(106, 239, 253, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(124, 88, 247, 0.05) 0%, transparent 50%);
     }
-    .headline-glow {
-      color: #fff;
-      text-shadow:
-        0 0 8px var(--neon-blue),
-        0 0 16px #22d3ee33;
-      letter-spacing: 1px;
+    
+    body.light-theme {
+      background-color: var(--light-bg);
+      color: var(--dark-text);
+      background-image: 
+        radial-gradient(circle at 20% 20%, rgba(106, 239, 253, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(124, 88, 247, 0.1) 0%, transparent 50%);
     }
-    .sub-glow {
-      color: #aeefff;
-      font-weight: 500;
-      text-shadow:
-        0 0 6px #00BFFF44;
+    
+    .light-theme .header-bg {
+      background-color: rgba(248, 250, 252, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.6);
     }
-    .logo-gradient {
-      font-family: 'Bebas Neue', 'Inter', Arial, sans-serif;
-      background: linear-gradient(90deg, #6beffd 0%, #2b6eed 45%, #7c58f7 100%);
+    
+    .light-theme .mad-card {
+      background-color: var(--light-card-bg);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .light-theme .header-nav a {
+      color: var(--dark-text);
+    }
+    
+    .light-theme input, .light-theme textarea, .light-theme select {
+      background-color: #f1f5f9;
+      color: var(--dark-text);
+      border: 1px solid #e2e8f0;
+    }
+    
+    .light-theme input::placeholder, .light-theme textarea::placeholder {
+      color: #94a3b8;
+    }
+    
+    .light-theme .form-label {
+      color: var(--dark-text);
+    }
+    
+    .light-theme .testimonial-card {
+      background-color: #f8fafc;
+      border-left: 4px solid var(--blue);
+    }
+    
+    /* Common elements */
+    .header-bg {
+      background-color: rgba(12, 10, 22, 0.85);
+      backdrop-filter: blur(10px);
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
-      text-fill-color: transparent;
-      font-weight: bold;
-      letter-spacing: 2px;
+      -webkit-text-fill-color: transparent;
     }
-    .svg-orbit {
-      animation: orbit 11s linear infinite;
-      transform-origin: 50% 50%;
-    }
-    @keyframes orbit {
-      0% { transform: rotate(0deg);}
-      100% { transform: rotate(360deg);}
-    }
-    .mad-section {
-      background: rgba(16,24,40,0.93);
-      border-radius: 1.25rem;
-      box-shadow: 0 8px 32px 0 #0003;
-      margin: 0 auto;
-      padding: 2.5rem 1rem;
-      max-width: 980px;
-    }
-    .mad-card {
-      background: rgba(34,52,89,0.7);
-      border-radius: 1rem;
-      padding: 1.5rem 1.2rem 1.3rem 1.2rem;
-      margin: .5rem 0;
-      box-shadow: 0 2px 12px 0 #01344d28;
-    }
-    .timeline-bar {
-      background: linear-gradient(90deg, var(--neon-orange), #7c58f7);
-      border-radius: 10px;
-    }
-    .stat-title {
-      color: var(--neon-orange);
-      font-weight: bold;
-      letter-spacing: 0.5px;
-    }
-    .testimonial-card {
-      background: rgba(16,24,40,0.8);
-      border-radius: 1rem;
-      border-left: 5px solid var(--neon-blue);
-      box-shadow: 0 2px 16px 0 #00ffd042;
-      padding: 1.3rem 1.5rem 1.3rem 1.3rem;
-      margin-bottom: 1.25rem;
-      font-size: 1.11rem;
-      color: #fff;
-      font-style: italic;
+    
+    .gradient-border {
       position: relative;
     }
-    .testimonial-card::before {
-      content: '';
-      background: url("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/svgs/regular/comment-dots.svg") center/2rem no-repeat;
-      width: 2rem;
-      height: 2rem;
+    
+    .gradient-border::before {
+      content: "";
       position: absolute;
-      left: -2.6rem;
-      top: 1rem;
-      opacity: 0.5;
+      inset: 0;
+      padding: 1.5px;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
     }
-    .form-label {
-      color: #fff;
-      font-weight: 600;
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
     }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .pulse {
+      animation: pulse 3s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .rotateIn {
+      animation: rotateIn 1s forwards;
+    }
+    
+    @keyframes rotateIn {
+      from { transform: rotate(-5deg) scale(0.95); opacity: 0; }
+      to { transform: rotate(0) scale(1); opacity: 1; }
+    }
+    
+    .mad-section {
+      padding: 5rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .mad-card {
+      background-color: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .mad-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--border-glow);
+    }
+    
+    .testimonial-card {
+      background-color: rgba(30, 22, 53, 0.3);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border-left: 4px solid var(--blue);
+      margin-bottom: 1.25rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(106, 239, 253, 0.05), transparent 70%);
+      z-index: -1;
+    }
+    
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      z-index: -1;
+      opacity: 0.15;
+    }
+    
+    .theme-switch {
+      display: inline-block;
+      position: relative;
+      width: 50px;
+      height: 24px;
+    }
+    
+    .theme-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+      border-radius: 34px;
+      transition: .4s;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: .4s;
+    }
+    
+    input:checked + .slider {
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    
+    .slider .icon {
+      position: absolute;
+      top: 4px;
+      font-size: 14px;
+      color: var(--dark-bg);
+      transition: opacity 0.3s ease;
+    }
+    
+    .slider .sun {
+      left: 6px;
+      opacity: 1;
+    }
+    
+    .slider .moon {
+      right: 6px;
+      opacity: 0;
+    }
+    
+    input:checked + .slider .sun {
+      opacity: 0;
+    }
+    
+    input:checked + .slider .moon {
+      opacity: 1;
+    }
+    
     .form-ctabtn {
-      background: linear-gradient(90deg, var(--neon-orange), var(--neon-blue), var(--neon-green));
-      color: #101828;
+      background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
+      color: #ffffff;
       font-weight: bold;
       padding: 0.8rem 2.2rem;
       border-radius: 2.5rem;
-      transition: background .3s;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
     }
-    /* animations */
-    .scroll-fade {
+    
+    .form-ctabtn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(124, 88, 247, 0.4);
+    }
+    
+    .form-ctabtn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--purple), var(--blue), var(--cyan));
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity .7s cubic-bezier(.55,.06,.68,.19), transform .6s;
+      transition: opacity 0.5s ease;
     }
-    .scroll-fade.inview {
+    
+    .form-ctabtn:hover::before {
       opacity: 1;
-      transform: translateY(0);
-    }
-    /* override autofill for dark bg inputs */
-    input:-webkit-autofill,
-    input:-webkit-autofill:focus,
-    input:-webkit-autofill:hover, 
-    textarea:-webkit-autofill, 
-    textarea:-webkit-autofill:focus,
-    textarea:-webkit-autofill:hover,
-    select:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 50px #223459 inset;
-      -webkit-text-fill-color: white !important;
-      caret-color: white !important;
-    }
-    ::selection {
-      background: #00ffd0;
-      color: #101828;
-    }
-    /* Hide number up-down arrows in all browsers for budget field */
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-      -webkit-appearance: none; 
-      margin: 0; 
-    }
-    input[type=number] {
-      -moz-appearance: textfield;
-    }
-    .bg-mad-gradient {
-      background: linear-gradient(120deg, #101828, #22243b 80%, #272254 100%);
     }
     
-    /* Updated media query for mobile hero title */
-    @media (max-width: 768px) {
-      .mad-section {
-        padding: 1.25rem 0.3rem;
-      }
-      /* Increase the mobile hero title size */
-      #hero h1.headline-glow {
-        font-size: 3.2rem !important;
-        line-height: 1;
-      }
-      .logo-gradient {
-        font-size: 1.8rem !important;
-      }
+    .form-ctabtn span {
+      position: relative;
+      z-index: 1;
     }
     
-    /* Desktop size remains the same */
-    @media (min-width: 769px) {
-      #hero h1.headline-glow {
-        font-size: 5rem;
-      }
+    .cursor-glow {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(106, 239, 253, 0.15), transparent 70%);
+      position: fixed;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
     
-    /* Fire effect for "hell" */
-   .fire-text {
-  display: inline-block;
-  color: #fff9c4;
-  font-weight: bold;
-  text-shadow: 
-    0 0 4px #fff,
-    0 0 11px #fff,
-    0 0 19px #fff,
-    0 0 40px #ff9800,
-    0 0 80px #ff9800,
-    0 0 90px #ff9800,
-    0 0 100px #ff9800,
-    0 0 150px #ff9800;
-  position: relative;
-  animation: flames 2s ease-in-out infinite alternate;
-}
+    /* Firefly animation */
+    .firefly {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      width: 4px;
+      height: 4px;
+      margin: -2px 0 0 -2px;
+      background: rgba(106, 239, 253, 0.8);
+      border-radius: 50%;
+      box-shadow: 0 0 10px 2px rgba(106, 239, 253, 0.6);
+      will-change: transform;
+      pointer-events: none;
+    }
+    
+    /* Parallax elements */
+    .parallax {
+      transition: transform 0.1s ease-out;
+      will-change: transform;
+    }
+    
+    /* Counter animation */
+    .counter-anim {
+      display: inline-block;
+      font-weight: bold;
+    }
+    
+    /* Glitch effect */
+    .glitch {
+      position: relative;
+    }
 
-@keyframes flames {
-  0%, 100% {
-    text-shadow: 
-      0 0 4px #fff,
-      0 0 11px #fff,
-      0 0 19px #fff,
-      0 0 40px #ff9800,
-      0 0 80px #ff9800,
-      0 0 90px #ff9800,
-      0 0 100px #ff9800,
-      0 0 150px #ff9800;
-  }
-  25% {
-    text-shadow: 
-      0 0 4px #fff,
-      0 0 10px #fff,
-      0 0 18px #fff,
-      0 0 38px #ff9800,
-      0 0 73px #ff9800,
-      0 0 80px #ff9800,
-      0 0 94px #ff9800,
-      0 0 140px #ff9800;
-  }
-  50% {
-    text-shadow: 
-      0 0 5px #fff,
-      0 0 12px #fff,
-      0 0 20px #fff,
-      0 0 42px #ff9800,
-      0 0 85px #ff9800,
-      0 0 95px #ff9800,
-      0 0 105px #ff9800,
-      0 0 155px #ff9800;
-  }
-  75% {
-    text-shadow: 
-      0 0 4px #fff,
-      0 0 11px #fff,
-      0 0 19px #fff,
-      0 0 40px #ff9800,
-      0 0 80px #ff9800,
-      0 0 90px #ff9800,
-      0 0 100px #ff9800,
-      0 0 150px #ff9800;
-  }
-}
+    .glitch::before, .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+    }
+
+    .glitch::before {
+      left: 2px;
+      text-shadow: -1px 0 var(--cyan);
+      clip: rect(44px, 450px, 56px, 0);
+      animation: glitch-anim-1 5s infinite linear alternate-reverse;
+    }
+
+    .glitch::after {
+      left: -2px;
+      text-shadow: -1px 0 var(--purple);
+      clip: rect(44px, 450px, 56px, 0);
+      animation: glitch-anim-2 5s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch-anim-1 {
+      0% { clip: rect(20px, 9999px, 76px, 0); }
+      10% { clip: rect(33px, 9999px, 44px, 0); }
+      20% { clip: rect(92px, 9999px, 10px, 0); }
+      30% { clip: rect(1px, 9999px, 53px, 0); }
+      40% { clip: rect(44px, 9999px, 88px, 0); }
+      50% { clip: rect(67px, 9999px, 33px, 0); }
+      60% { clip: rect(23px, 9999px, 26px, 0); }
+      70% { clip: rect(81px, 9999px, 72px, 0); }
+      80% { clip: rect(29px, 9999px, 18px, 0); }
+      90% { clip: rect(54px, 9999px, 41px, 0); }
+      100% { clip: rect(43px, 9999px, 75px, 0); }
+    }
+
+    @keyframes glitch-anim-2 {
+      0% { clip: rect(12px, 9999px, 42px, 0); }
+      10% { clip: rect(23px, 9999px, 76px, 0); }
+      20% { clip: rect(52px, 9999px, 82px, 0); }
+      30% { clip: rect(83px, 9999px, 28px, 0); }
+      40% { clip: rect(11px, 9999px, 59px, 0); }
+      50% { clip: rect(77px, 9999px, 93px, 0); }
+      60% { clip: rect(28px, 9999px, 12px, 0); }
+      70% { clip: rect(54px, 9999px, 84px, 0); }
+      80% { clip: rect(81px, 9999px, 39px, 0); }
+      90% { clip: rect(42px, 9999px, 68px, 0); }
+      100% { clip: rect(12px, 9999px, 23px, 0); }
+    }
     
-    /* Avoid scrollbars for PDF export */
-    body {
-      overflow-x: hidden !important;
+    /* SVG animations */
+    .svg-path {
+      stroke-dasharray: 500;
+      stroke-dashoffset: 500;
+      animation: draw 1.5s linear forwards;
+    }
+    
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    
+    /* Character typing animation */
+    .typing {
+      border-right: 3px solid var(--cyan);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+    }
+    
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: var(--cyan) }
+    }
+    
+    /* Stats counter animation */
+    .stat-counter {
+      font-weight: bold;
+      font-size: 2rem;
+      color: var(--cyan);
+      display: inline-block;
+    }
+    
+    /* For PDF optimization */
+    @media print {
+      .header-bg {
+        position: relative !important;
+        display: block;
+      }
+      
+      section {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      
+      .mad-section {
+        padding: 2rem 1rem;
+      }
+      
+      body {
+        background: #fff !important;
+        color: #000 !important;
+      }
+      
+      .gradient-text {
+        color: var(--blue) !important;
+        -webkit-text-fill-color: var(--blue) !important;
+      }
+      
+      .orb, .backdrop, .firefly, .cursor-glow {
+        display: none !important;
+      }
     }
   </style>
 </head>
-<body class="bg-mad-gradient">
-  <div class="px-4 sm:px-6 lg:px-8">
+<body>
+  <div class="cursor-glow" id="cursor-glow"></div>
+  
+  <!-- Animated Fireflies -->
+  <div id="fireflies-container"></div>
+  
+  <!-- Background Orbs -->
+  <div class="orb" style="width: 500px; height: 500px; top: 15%; left: 10%; background: radial-gradient(circle at center, rgba(106, 239, 253, 0.4), transparent 70%);"></div>
+  <div class="orb" style="width: 600px; height: 600px; top: 50%; right: 5%; background: radial-gradient(circle at center, rgba(124, 88, 247, 0.4), transparent 70%);"></div>
+  <div class="orb" style="width: 400px; height: 400px; bottom: 20%; left: 25%; background: radial-gradient(circle at center, rgba(43, 110, 237, 0.4), transparent 70%);"></div>
+  
   <!-- Sticky Navigation Bar -->
-  <nav class="fixed top-0 left-0 right-0 z-30 bg-opacity-85 bg-mad-gradient shadow-lg border-b border-gray-700">
+  <nav class="fixed top-0 left-0 right-0 z-50 header-bg shadow-lg">
     <div class="container mx-auto px-4 flex items-center justify-between h-16">
       <!-- Logo (gradient style) -->
-      <a href="#hero" class="flex-shrink-0" aria-label="Madketers Home">
-        <span class="logo-gradient text-3xl" style="letter-spacing:2px;">MADKETERS</span>
+      <a href="#hero" class="flex-shrink-0 relative" aria-label="Madketers Home">
+        <div class="text-3xl font-bold gradient-text" style="letter-spacing:2px;">MADKETERS</div>
       </a>
+      
       <!-- Desktop Links -->
-      <div class="hidden md:flex space-x-7 font-semibold text-sm uppercase">
-        <a href="#hero" class="hover:text-neon-orange transition">Home</a>
-        <a href="#mad-formula" class="hover:text-neon-orange transition">Work</a>
-        <a href="#how-we-work" class="hover:text-neon-orange transition">Services</a>
-        <a href="#contact" class="hover:text-neon-orange transition">Contact</a>
+      <div class="hidden md:flex space-x-8 font-semibold text-sm uppercase header-nav">
+        <a href="#hero" class="hover:text-cyan transition-colors duration-300 relative overflow-hidden group">
+          <span>Home</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-cyan to-blue group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#services" class="hover:text-cyan transition-colors duration-300 relative overflow-hidden group">
+          <span>Services</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-cyan to-blue group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#process" class="hover:text-cyan transition-colors duration-300 relative overflow-hidden group">
+          <span>Process</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-cyan to-blue group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#team" class="hover:text-cyan transition-colors duration-300 relative overflow-hidden group">
+          <span>Team</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-cyan to-blue group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#contact" class="hover:text-cyan transition-colors duration-300 relative overflow-hidden group">
+          <span>Contact</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-cyan to-blue group-hover:w-full transition-all duration-300"></span>
+        </a>
       </div>
-      <!-- Socials -->
-      <div class="hidden md:flex gap-5 items-center">
-        <a href="#" title="LinkedIn" class="text-lg text-gray-300 hover:text-[#0091ff]"><i class="fab fa-linkedin"></i></a>
-        <a href="#" title="Instagram" class="text-lg text-gray-300 hover:text-pink-500"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="Email" class="text-lg text-gray-300 hover:text-neon-orange"><i class="fas fa-envelope"></i></a>
+      
+      <!-- Theme Toggle + Socials -->
+      <div class="hidden md:flex items-center gap-5">
+        <div class="theme-switch-wrapper flex items-center">
+          <label class="theme-switch" for="theme-toggle">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider">
+              <i class="fas fa-sun icon sun"></i>
+              <i class="fas fa-moon icon moon"></i>
+            </span>
+          </label>
+        </div>
+        <div class="flex gap-4">
+          <a href="#" title="LinkedIn" class="text-lg hover:text-cyan transition-colors duration-300 transform hover:scale-110">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="#" title="Instagram" class="text-lg hover:text-purple transition-colors duration-300 transform hover:scale-110">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" title="Email" class="text-lg hover:text-blue transition-colors duration-300 transform hover:scale-110">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
       </div>
-      <!-- Mobile Menu -->
-      <div class="md:hidden flex items-center">
-        <button id="mad-menu-btn" class="focus:outline-none text-white text-2xl">
+      
+      <!-- Mobile Menu Toggle -->
+      <div class="md:hidden flex items-center gap-4">
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="theme-toggle-mobile">
+            <input type="checkbox" id="theme-toggle-mobile">
+            <span class="slider">
+              <i class="fas fa-sun icon sun"></i>
+              <i class="fas fa-moon icon moon"></i>
+            </span>
+          </label>
+        </div>
+        <button id="mobile-menu-btn" class="text-2xl focus:outline-none hover:text-cyan">
           <i class="fas fa-bars"></i>
         </button>
       </div>
     </div>
+    
     <!-- Mobile nav dropdown -->
-    <div id="mad-mobile-nav" class="hidden md:hidden absolute top-16 left-0 w-full bg-[#151928] border-t border-gray-700 z-40">
+    <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full header-bg border-t border-purple/20 z-40">
       <div class="flex flex-col text-lg p-5 space-y-4 font-semibold">
-        <a href="#hero" class="hover:text-neon-orange transition">Home</a>
-        <a href="#mad-formula" class="hover:text-neon-orange transition">Work</a>
-        <a href="#how-we-work" class="hover:text-neon-orange transition">Services</a>
-        <a href="#contact" class="hover:text-neon-orange transition">Contact</a>
+        <a href="#hero" class="hover:text-cyan transition-colors duration-300">Home</a>
+        <a href="#services" class="hover:text-cyan transition-colors duration-300">Services</a>
+        <a href="#process" class="hover:text-cyan transition-colors duration-300">Process</a>
+        <a href="#team" class="hover:text-cyan transition-colors duration-300">Team</a>
+        <a href="#contact" class="hover:text-cyan transition-colors duration-300">Contact</a>
         <div class="flex pt-4 gap-6">
-          <a href="#" title="LinkedIn" class="text-gray-300 hover:text-[#0091ff] text-xl"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="Instagram" class="text-gray-300 hover:text-pink-500 text-xl"><i class="fab fa-instagram"></i></a>
-          <a href="#" title="Email" class="text-gray-300 hover:text-neon-orange text-xl"><i class="fas fa-envelope"></i></a>
+          <a href="#" title="LinkedIn" class="hover:text-cyan transition-colors duration-300">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="#" title="Instagram" class="hover:text-purple transition-colors duration-300">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" title="Email" class="hover:text-blue transition-colors duration-300">
+            <i class="fas fa-envelope"></i>
+          </a>
         </div>
       </div>
     </div>
   </nav>
-  <!-- Hero Section -->
-<section id="hero" class="pt-8 min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8">
   
-<h1 class="headline-glow font-extrabold leading-tight mb-2 z-10 tracking-wider"
-     style="font-family:'Bebas Neue',sans-serif;">Mad Minds.<br class="md:hidden"> Measurable Results.</h1>
-      <div class="sub-glow text-lg sm:text-xl mt-4 max-w-2xl mx-auto">
-        We're not your average marketers. We're Madketers.<br>
-        A high-functioning squad of ex-big-agency pros who mix bold content, automation wizardry, and surgical ad strategy to create performance marketing that doesn't just perform—it performs like <span class="fire-text">hell</span>.
+  <!-- Hero Section -->
+  <section id="hero" class="pt-28 min-h-screen flex flex-col justify-center relative overflow-hidden">
+    <div class="backdrop"></div>
+    <div class="mad-section">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div class="z-10">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6" data-aos="fade-right" data-aos-duration="1000">
+            <span class="block mb-2 gradient-text" style="font-family:'Bebas Neue',sans-serif;">Mad Minds.</span>
+            <span class="block gradient-text glitch" data-text="Measurable Marketing." style="font-family:'Bebas Neue',sans-serif;">Measurable Marketing.</span>
+          </h1>
+          <div class="text-lg md:text-xl mb-8 typing-container overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+            <p class="typing" style="animation-delay: 0.5s;">We're not your average marketers. We're Madketers.</p>
+          </div>
+          <p class="text-gray-300 mb-8 max-w-md" data-aos="fade-up" data-aos-delay="600">
+            A team of passionate marketing specialists who blend creative strategy, data-driven insights, and cutting-edge execution to deliver marketing that doesn't just perform—it excels.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="800">
+            <a href="#contact" class="form-ctabtn transform hover:scale-105 transition-all duration-300">
+              <span>🚀 Get Your Growth Plan</span>
+            </a>
+            <a href="#process" class="form-ctabtn transform hover:scale-105 transition-all duration-300">
+              <span>🎯 See Our Process</span>
+            </a>
+          </div>
+        </div>
+        <div class="relative z-10" data-aos="zoom-in" data-aos-duration="1000">
+          <!-- Marketing Dashboard Animation -->
+          <div class="relative w-full h-80 md:h-96 floating">
+            <!-- Phone Mockup -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <!-- SVG Phone Mockup with Dashboard -->
+              <svg width="80%" height="100%" viewBox="0 0 320 640" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-2xl">
+                <!-- Phone Frame -->
+                <rect x="10" y="10" width="300" height="620" rx="30" fill="#111" stroke="url(#phoneGradient)" stroke-width="5" class="svg-path"/>
+                <!-- Screen -->
+                <rect x="20" y="50" width="280" height="540" rx="15" fill="#0a0a16"/>
+                <!-- Dashboard elements - animated -->
+                <!-- Graph -->
+                <path d="M50 420L100 350L150 390L200 320L250 290" stroke="url(#graphGradient)" stroke-width="3" class="svg-path" style="animation-delay: 0.5s;"/>
+                <circle cx="50" cy="420" r="5" fill="var(--cyan)" class="pulse"/>
+                <circle cx="100" cy="350" r="5" fill="var(--cyan)" class="pulse" style="animation-delay: 0.2s;"/>
+                <circle cx="150" cy="390" r="5" fill="var(--cyan)" class="pulse" style="animation-delay: 0.4s;"/>
+                <circle cx="200" cy="320" r="5" fill="var(--cyan)" class="pulse" style="animation-delay: 0.6s;"/>
+                <circle cx="250" cy="290" r="5" fill="var(--cyan)" class="pulse" style="animation-delay: 0.8s;"/>
+                
+                <!-- Header -->
+                <rect x="40" y="80" width="240" height="40" rx="5" fill="#1e1637" class="svg-path" style="animation-delay: 0.1s;"/>
+                <rect x="50" y="90" width="120" height="20" rx="5" fill="#2B6EED" class="svg-path" style="animation-delay: 0.2s;"/>
+                
+                <!-- Chart Title -->
+                <rect x="40" y="140" width="180" height="15" rx="5" fill="#1e1637" class="svg-path" style="animation-delay: 0.3s;"/>
+                
+                <!-- Bar Chart -->
+                <rect x="50" y="170" width="20" height="60" rx="2" fill="url(#barGradient1)" class="svg-path" style="animation-delay: 0.4s;"/>
+                <rect x="80" y="170" width="20" height="90" rx="2" fill="url(#barGradient2)" class="svg-path" style="animation-delay: 0.5s;"/>
+                <rect x="110" y="170" width="20" height="70" rx="2" fill="url(#barGradient1)" class="svg-path" style="animation-delay: 0.6s;"/>
+                <rect x="140" y="170" width="20" height="100" rx="2" fill="url(#barGradient2)" class="svg-path" style="animation-delay: 0.7s;"/>
+                <rect x="170" y="170" width="20" height="80" rx="2" fill="url(#barGradient1)" class="svg-path" style="animation-delay: 0.8s;"/>
+                
+                <!-- Stats -->
+                <rect x="40" y="290" width="100" height="20" rx="5" fill="#1e1637" class="svg-path" style="animation-delay: 0.9s;"/>
+                <rect x="40" y="320" width="70" height="15" rx="5" fill="#7C58F7" class="svg-path" style="animation-delay: 1s;"/>
+                
+                <!-- Icons -->
+                <circle cx="250" cy="200" r="15" fill="url(#iconGradient)" class="svg-path pulse" style="animation-delay: 1.1s;"/>
+                <circle cx="250" cy="240" r="15" fill="url(#iconGradient)" class="svg-path pulse" style="animation-delay: 1.2s;"/>
+                
+                <!-- Bottom Nav -->
+                <rect x="40" y="480" width="240" height="50" rx="10" fill="#1e1637" class="svg-path" style="animation-delay: 1.3s;"/>
+                <circle cx="70" cy="505" r="10" fill="var(--cyan)" class="pulse" style="animation-delay: 1.4s;"/>
+                <circle cx="120" cy="505" r="10" fill="var(--blue)" class="pulse" style="animation-delay: 1.5s;"/>
+                <circle cx="170" cy="505" r="10" fill="var(--purple)" class="pulse" style="animation-delay: 1.6s;"/>
+                <circle cx="220" cy="505" r="10" fill="var(--cyan)" class="pulse" style="animation-delay: 1.7s;"/>
+                
+                <!-- Defs for gradients -->
+                <defs>
+                  <linearGradient id="phoneGradient" x1="0" y1="0" x2="320" y2="640" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="var(--cyan)"/>
+                    <stop offset="50%" stop-color="var(--blue)"/>
+                    <stop offset="100%" stop-color="var(--purple)"/>
+                  </linearGradient>
+                  <linearGradient id="graphGradient" x1="50" y1="420" x2="250" y2="290" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="var(--cyan)"/>
+                    <stop offset="100%" stop-color="var(--purple)"/>
+                  </linearGradient>
+                  <linearGradient id="barGradient1" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="var(--cyan)"/>
+                    <stop offset="100%" stop-color="var(--blue)"/>
+                  </linearGradient>
+                  <linearGradient id="barGradient2" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="var(--blue)"/>
+                    <stop offset="100%" stop-color="var(--purple)"/>
+                  </linearGradient>
+                  <linearGradient id="iconGradient" x1="0" y1="0" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="var(--blue)"/>
+                    <stop offset="100%" stop-color="var(--purple)"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="flex flex-col sm:flex-row gap-3 mt-8 mb-3 justify-center">
-        <a href="#contact" class="form-ctabtn text-base shadow-md hover:scale-105 transition">🚀 Get My Growth Plan</a>
-        <a href="#how-we-work" class="form-ctabtn text-base shadow-md hover:scale-105 transition bg-gradient-to-r from-blue-600 via-neon-blue to-neon-green text-deep-navy">🎯 See How We Work</a>
-      </div>
-      <!-- Animated orbit logos (SVG) -->
-      <div class="mt-8 relative w-full flex justify-center">
-        <svg width="220" height="80" viewBox="0 0 220 80" class="absolute z-0 hidden sm:block">
-          <!-- Orbit path -->
-          <ellipse cx="110" cy="40" rx="92" ry="24" fill="none" stroke="#7c58f755" stroke-width="2"/>
-        </svg>
-        <div class="flex gap-7 sm:gap-12 relative z-10">
-          <i class="fab fa-facebook-square text-3xl svg-orbit text-[#0866FF]" title="Meta"></i>
-          <i class="fab fa-google text-3xl svg-orbit text-[#ffb100]" title="Google"></i>
-          <i class="fab fa-linkedin text-3xl svg-orbit text-[#0a66c2]" title="LinkedIn"></i>
-          <i class="fab fa-tiktok text-3xl svg-orbit text-[#fff] bg-black rounded-xl p-1" title="TikTok"></i>
-          <i class="fab fa-youtube text-3xl svg-orbit text-[#FF0000]" title="YouTube"></i>
+      
+      <!-- Social Platforms Animation -->
+      <div class="mt-16 relative" data-aos="fade-up">
+        <p class="text-center text-sm text-gray-400 mb-6">TRUSTED BY MARKETERS ACROSS ALL PLATFORMS</p>
+        <div class="flex justify-center items-center gap-8 md:gap-16 flex-wrap">
+          <div class="w-8 h-8 relative group">
+            <i class="fab fa-facebook text-2xl text-gray-400 group-hover:text-[#1877F2] transition-colors duration-300 transform group-hover:scale-125"></i>
+          </div>
+          <div class="w-8 h-8 relative group">
+            <i class="fab fa-google text-2xl text-gray-400 group-hover:text-[#EA4335] transition-colors duration-300 transform group-hover:scale-125"></i>
+          </div>
+          <div class="w-8 h-8 relative group">
+            <i class="fab fa-instagram text-2xl text-gray-400 group-hover:text-[#E1306C] transition-colors duration-300 transform group-hover:scale-125"></i>
+          </div>
+          <div class="w-8 h-8 relative group">
+            <i class="fab fa-linkedin text-2xl text-gray-400 group-hover:text-[#0A66C2] transition-colors duration-300 transform group-hover:scale-125"></i>
+          </div>
+          <div class="w-8 h-8 relative group">
+            <i class="fab fa-tiktok text-2xl text-gray-400 group-hover:text-white transition-colors duration-300 transform group-hover:scale-125"></i>
+          </div>
+          <div class="w-8 h-8 relative group">
+            <i class="fab fa-twitter text-2xl text-gray-400 group-hover:text-[#1DA1F2] transition-colors duration-300 transform group-hover:scale-125"></i>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- Mad Formula Section -->
-  <section id="mad-formula" class="mad-section mt-8">
-    <h2 class="text-2xl md:text-3xl font-extrabold flex items-center gap-3 headline-glow mb-7"><span class="text-yellow-400 text-2xl"><i class="fas fa-brain"></i></span> What Happens When Performance Marketers Go a Little Mad?</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <!-- Cards with wild copy -->
-      <div class="mad-card flex flex-col items-center text-center shadow scroll-fade">
-        <span class="text-3xl mb-2 text-neon-orange"><i class="fas fa-chess-knight"></i></span>
-        <div class="font-bold text-lg">Strategic Planning</div>
-        <div class="mt-1 text-gray-200">We don't "ideate." We orchestrate attacks. Funnel plans so smart they could outwit your competitor's CMO.</div>
-      </div>
-      <div class="mad-card flex flex-col items-center text-center shadow scroll-fade">
-        <span class="text-3xl mb-2 text-neon-blue"><i class="fas fa-chart-line"></i></span>
-        <div class="font-bold text-lg">Data & Automation</div>
-        <div class="mt-1 text-gray-200">We talk in ROAS, dream in dashboards. CRM flows, Zapier zaps, GA4 wizardry — automated to scale.</div>
-      </div>
-      <div class="mad-card flex flex-col items-center text-center shadow scroll-fade">
-        <span class="text-3xl mb-2 text-neon-green"><i class="fab fa-hubspot"></i></span>
-        <div class="font-bold text-lg">Social Media Domination</div>
-        <div class="mt-1 text-gray-200">From thumb-stop to heart-drop. Scroll-breaking content + calculated media buying = domination.</div>
-      </div>
-      <div class="mad-card flex flex-col items-center text-center shadow scroll-fade md:col-span-2">
-        <span class="text-3xl mb-2 text-fuchsia-400"><i class="fas fa-bomb"></i></span>
-        <div class="font-bold text-lg">Content That's Not Boring</div>
-        <div class="mt-1 text-gray-200">We don't make "posts." We make scroll assassins. Bold. Weird. Sticky. Branded like it's your religion.</div>
-      </div>
-      <div class="mad-card flex flex-col items-center text-center shadow scroll-fade md:col-span-1">
-        <span class="text-3xl mb-2 text-blue-400"><i class="fas fa-rocket"></i></span>
-        <div class="font-bold text-lg">Platform-First Execution</div>
-        <div class="mt-1 text-gray-200">Madketers speak fluent Meta, Google, LinkedIn, and TikTok. We don't guess—we optimize by the minute.</div>
-      </div>
-    </div>
-    <div class="mt-7 relative">
-      <div class="absolute left-0 right-0 h-px bg-gradient-to-r from-neon-blue via-transparent to-neon-orange opacity-25" style="top: 1.8rem;"></div>
-      <div class="flex flex-row flex-wrap justify-center gap-2 mt-8">
-        <span class="inline-flex items-center px-3 py-1.5 bg-[#29304a] rounded text-sm font-bold text-neon-blue mr-1">Bold Ideas</span>
-        <span class="inline-flex items-center px-3 py-1.5 bg-[#29304a] rounded text-sm font-bold text-neon-orange mr-1">Weird Science</span>
-        <span class="inline-flex items-center px-3 py-1.5 bg-[#29304a] rounded text-sm font-bold text-neon-green mr-1">Data Obsessed</span>
-      </div>
-    </div>
-  </section>
-  <!-- How We Work Section -->
-  <section id="how-we-work" class="mad-section mt-8">
-    <h2 class="headline-glow text-2xl md:text-3xl font-extrabold flex items-center mb-8"><span class="text-pink-400 mr-2"><i class="fas fa-microscope"></i></span> The Mad Method: We're Not Here to Test. We're Here to Win.</h2>
-    <div class="flex flex-col md:flex-row items-center gap-8">
-      <div class="flex-1 flex flex-col max-w-lg gap-7">
-        <!-- Timeline step 1 -->
-        <div class="flex items-center gap-4 scroll-fade">
-          <div class="timeline-bar w-3.5 h-3.5"></div>
-          <div>
-            <div class="font-semibold text-lg text-neon-orange">Diagnose the Chaos</div>
-            <div class="text-gray-200 text-sm mt-1">We deep dive into your data, ads, and content. We ask dumb questions. Then we find gold.</div>
-          </div>
-        </div>
-        <!-- step 2 -->
-        <div class="flex items-center gap-4 scroll-fade">
-          <div class="timeline-bar w-3.5 h-3.5"></div>
-          <div>
-            <div class="font-semibold text-lg text-neon-blue">Design Your Weapon</div>
-            <div class="text-gray-200 text-sm mt-1">Custom funnel. Laser-sharp audiences. Visuals so good they haunt your competitors.</div>
-          </div>
-        </div>
-        <!-- step 3 -->
-        <div class="flex items-center gap-4 scroll-fade">
-          <div class="timeline-bar w-3.5 h-3.5"></div>
-          <div>
-            <div class="font-semibold text-lg text-neon-green">Launch & Loop</div>
-            <div class="text-gray-200 text-sm mt-1">We don't "set and forget." We optimize, tweak, and tweak again till it's a beast.</div>
-          </div>
-        </div>
-        <!-- step 4 -->
-        <div class="flex items-center gap-4 scroll-fade">
-          <div class="timeline-bar w-3.5 h-3.5"></div>
-          <div>
-            <div class="font-semibold text-lg text-fuchsia-400">Scale, Baby, Scale</div>
-            <div class="text-gray-200 text-sm mt-1">This is where it gets mad. You'll start needing bigger spreadsheets.</div>
-          </div>
-        </div>
-      </div>
-      <div class="flex-1 flex justify-center items-center mt-6 md:mt-0">
-        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=facearea&w=320&h=320&facepad=3&q=80" alt="mad scientist style digital strategist" class="rounded-xl shadow-lg max-w-xs md:max-w-md border-4 border-neon-blue" style="filter:hue-rotate(-22deg) saturate(1.1);">
-      </div>
-    </div>
-  </section>
-  <!-- Who Are the Madketers Section -->
-  <section id="team" class="mad-section mt-8">
-    <h2 class="headline-glow text-2xl md:text-3xl font-extrabold mb-5 flex items-center gap-2">
-      <span class="text-green-300"><i class="fas fa-user-astronaut"></i></span>
-      Built by the Brains Behind the Brands.
-    </h2>
-    <div class="grid md:grid-cols-2 gap-6 items-center">
-      <div>
-        <p class="text-lg text-gray-200 mb-5">
-          We're not fresh grads who just discovered "hook, story, offer." We're a rogue team of marketers who've run 9-figure funnels, scaled D2C monsters, and made enterprise brands act like creators.<br><br>
-          You don't just get an account manager. You get a squad of ex-agency, ex-brand, ex-corporate rebels who actually know what they're doing.
+  
+  <!-- Services Section -->
+  <section id="services" class="relative">
+    <div class="backdrop"></div>
+    <div class="mad-section">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">
+          <i class="fas fa-brain mr-2"></i> What Happens When Marketers Go a Little Mad?
+        </h2>
+        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+          We bring method to the madness with services designed to transform your marketing performance.
         </p>
-        <div class="flex justify-center">
-          <a href="#contact" class="form-ctabtn text-base shadow-md hover:scale-105 transition">💬 Book a Mad Strategy Call</a>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Service Card 1 -->
+        <div class="mad-card gradient-border group relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan/5 to-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-cyan to-blue flex items-center justify-center mb-4 transform group-hover:rotate-6 transition-transform duration-300">
+              <i class="fas fa-chess-knight text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-cyan transition-colors duration-300">Strategic Planning</h3>
+            <p class="text-gray-300 group-hover:text-white transition-colors duration-300">
+              We craft meticulous marketing strategies designed to outmaneuver your competition and capture your audience's attention.
+            </p>
+          </div>
+          <svg class="absolute bottom-0 right-0 w-24 h-24 opacity-10 group-hover:opacity-20 transition-opacity duration-300" viewBox="0 0 100 100" fill="none">
+            <path d="M10,90 Q30,70 50,90 Q70,110 90,90" stroke="url(#serviceGradient1)" stroke-width="4" class="svg-path"/>
+            <path d="M10,70 Q30,50 50,70 Q70,90 90,70" stroke="url(#serviceGradient1)" stroke-width="4" class="svg-path" style="animation-delay: 0.2s"/>
+            <path d="M10,50 Q30,30 50,50 Q70,70 90,50" stroke="url(#serviceGradient1)" stroke-width="4" class="svg-path" style="animation-delay: 0.4s"/>
+            <defs>
+              <linearGradient id="serviceGradient1" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="var(--cyan)"/>
+                <stop offset="100%" stop-color="var(--blue)"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        
+        <!-- Service Card 2 -->
+        <div class="mad-card gradient-border group relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue/5 to-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-blue to-purple flex items-center justify-center mb-4 transform group-hover:rotate-6 transition-transform duration-300">
+              <i class="fas fa-chart-line text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-blue transition-colors duration-300">Data & Analytics</h3>
+            <p class="text-gray-300 group-hover:text-white transition-colors duration-300">
+              We speak the language of ROAS, conversion rates, and attribution. Every decision is backed by data that drives results.
+            </p>
+          </div>
+          <svg class="absolute bottom-0 right-0 w-24 h-24 opacity-10 group-hover:opacity-20 transition-opacity duration-300" viewBox="0 0 100 100" fill="none">
+            <path d="M10,90 L30,50 L50,70 L70,30 L90,10" stroke="url(#serviceGradient2)" stroke-width="4" class="svg-path"/>
+            <circle cx="30" cy="50" r="4" fill="var(--blue)" class="pulse"/>
+            <circle cx="50" cy="70" r="4" fill="var(--blue)" class="pulse" style="animation-delay: 0.2s"/>
+            <circle cx="70" cy="30" r="4" fill="var(--blue)" class="pulse" style="animation-delay: 0.4s"/>
+            <defs>
+              <linearGradient id="serviceGradient2" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="var(--blue)"/>
+                <stop offset="100%" stop-color="var(--purple)"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        
+        <!-- Service Card 3 -->
+        <div class="mad-card gradient-border group relative overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+          <div class="absolute inset-0 bg-gradient-to-br from-purple/5 to-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-purple to-cyan flex items-center justify-center mb-4 transform group-hover:rotate-6 transition-transform duration-300">
+              <i class="fas fa-hashtag text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-purple transition-colors duration-300">Social Media Expertise</h3>
+            <p class="text-gray-300 group-hover:text-white transition-colors duration-300">
+              From scroll-stopping content to precision ad targeting, we create social presences that build real connections.
+            </p>
+          </div>
+          <svg class="absolute bottom-0 right-0 w-24 h-24 opacity-10 group-hover:opacity-20 transition-opacity duration-300" viewBox="0 0 100 100" fill="none">
+            <circle cx="30" cy="40" r="15" stroke="url(#serviceGradient3)" stroke-width="3" fill="none" class="svg-path"/>
+            <circle cx="70" cy="40" r="15" stroke="url(#serviceGradient3)" stroke-width="3" fill="none" class="svg-path" style="animation-delay: 0.2s"/>
+            <circle cx="50" cy="70" r="15" stroke="url(#serviceGradient3)" stroke-width="3" fill="none" class="svg-path" style="animation-delay: 0.4s"/>
+            <path d="M40,40 L60,40" stroke="var(--purple)" stroke-width="2" class="svg-path" style="animation-delay: 0.6s"/>
+            <path d="M70,55 L57,67" stroke="var(--purple)" stroke-width="2" class="svg-path" style="animation-delay: 0.8s"/>
+            <path d="M30,55 L43,67" stroke="var(--purple)" stroke-width="2" class="svg-path" style="animation-delay: 1s"/>
+            <defs>
+              <linearGradient id="serviceGradient3" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="var(--purple)"/>
+                <stop offset="100%" stop-color="var(--cyan)"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        
+        <!-- Service Card 4 -->
+        <div class="mad-card gradient-border group relative overflow-hidden md:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="400">
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan/5 to-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-cyan to-purple flex items-center justify-center mb-4 transform group-hover:rotate-6 transition-transform duration-300">
+              <i class="fas fa-pencil-alt text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-cyan transition-colors duration-300">Content That Converts</h3>
+            <p class="text-gray-300 group-hover:text-white transition-colors duration-300">
+              Bold, distinctive, and purposeful content that reinforces your brand while driving meaningful engagement.
+            </p>
+          </div>
+          <svg class="absolute bottom-0 right-0 w-24 h-24 opacity-10 group-hover:opacity-20 transition-opacity duration-300" viewBox="0 0 100 100" fill="none">
+            <rect x="20" y="20" width="60" height="15" rx="2" stroke="url(#serviceGradient4)" stroke-width="3" fill="none" class="svg-path"/>
+            <rect x="20" y="45" width="40" height="15" rx="2" stroke="url(#serviceGradient4)" stroke-width="3" fill="none" class="svg-path" style="animation-delay: 0.2s"/>
+            <rect x="20" y="70" width="50" height="15" rx="2" stroke="url(#serviceGradient4)" stroke-width="3" fill="none" class="svg-path" style="animation-delay: 0.4s"/>
+            <defs>
+              <linearGradient id="serviceGradient4" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="var(--cyan)"/>
+                <stop offset="100%" stop-color="var(--purple)"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        
+        <!-- Service Card 5 -->
+        <div class="mad-card gradient-border group relative overflow-hidden lg:col-span-2" data-aos="fade-up" data-aos-delay="500">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue/5 to-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-blue to-cyan flex items-center justify-center mb-4 transform group-hover:rotate-6 transition-transform duration-300">
+              <i class="fas fa-rocket text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-blue transition-colors duration-300">Platform Mastery</h3>
+            <p class="text-gray-300 group-hover:text-white transition-colors duration-300">
+              Expert-level knowledge across all major marketing platforms. We don't guess—we optimize strategically for each channel.
+            </p>
+          </div>
+          <svg class="absolute bottom-0 right-0 w-24 h-24 opacity-10 group-hover:opacity-20 transition-opacity duration-300" viewBox="0 0 100 100" fill="none">
+            <path d="M50,10 L30,90" stroke="url(#serviceGradient5)" stroke-width="3" class="svg-path"/>
+            <path d="M50,10 L70,90" stroke="url(#serviceGradient5)" stroke-width="3" class="svg-path" style="animation-delay: 0.2s"/>
+            <circle cx="50" cy="10" r="8" fill="var(--blue)" class="pulse"/>
+            <polygon points="30,90 50,70 70,90" stroke="url(#serviceGradient5)" stroke-width="3" fill="none" class="svg-path" style="animation-delay: 0.4s"/>
+            <defs>
+              <linearGradient id="serviceGradient5" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="var(--blue)"/>
+                <stop offset="100%" stop-color="var(--cyan)"/>
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
       </div>
-      <div class="flex justify-center">
-        <!-- Comic panel team illustration placeholder -->
-        <div class="flex items-center space-x-4">
-          <div class="flex flex-col items-center">
-            <span class="logo-gradient text-lg font-bold">Jay</span>
-            <i class="fas fa-drafting-compass text-3xl text-neon-orange"></i>
-            <span class="text-xs text-gray-400 mt-1">Funnel Blueprint</span>
+    </div>
+  </section>
+  
+  <!-- Process Section -->
+  <section id="process" class="relative">
+    <div class="backdrop"></div>
+    <div class="mad-section">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">
+          <i class="fas fa-cogs mr-2"></i> The Mad Method: Here to Deliver Results
+        </h2>
+        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+          Our proven process combines creativity with data-driven decisions for maximum impact.
+        </p>
+      </div>
+      
+      <div class="flex flex-col lg:flex-row items-center gap-8">
+        <div class="flex-1 order-2 lg:order-1">
+          <!-- Process Steps Animation -->
+          <div class="relative py-8">
+            <!-- Step 1 -->
+            <div class="flex items-start gap-6 mb-12 relative" data-aos="fade-right">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-cyan to-blue flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue/20 z-10">
+                <span class="text-white text-xl font-bold">1</span>
+              </div>
+              <div class="process-content">
+                <h3 class="text-xl font-bold mb-2 gradient-text">Analyze & Discover</h3>
+                <p class="text-gray-300">
+                  Deep dive into your data, audience, and competition to find opportunities others miss.
+                </p>
+              </div>
+              <!-- Animated connecting line -->
+              <div class="absolute top-16 left-8 w-0.5 h-16 bg-gradient-to-b from-blue to-purple opacity-30"></div>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="flex items-start gap-6 mb-12 relative" data-aos="fade-right" data-aos-delay="200">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue to-purple flex items-center justify-center flex-shrink-0 shadow-lg shadow-purple/20 z-10">
+                <span class="text-white text-xl font-bold">2</span>
+              </div>
+              <div class="process-content">
+                <h3 class="text-xl font-bold mb-2 gradient-text">Strategy Development</h3>
+                <p class="text-gray-300">
+                  Custom marketing plans with precise targeting, compelling creatives, and clear conversion paths.
+                </p>
+              </div>
+              <!-- Animated connecting line -->
+              <div class="absolute top-16 left-8 w-0.5 h-16 bg-gradient-to-b from-purple to-cyan opacity-30"></div>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="flex items-start gap-6 mb-12 relative" data-aos="fade-right" data-aos-delay="400">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple to-cyan flex items-center justify-center flex-shrink-0 shadow-lg shadow-cyan/20 z-10">
+                <span class="text-white text-xl font-bold">3</span>
+              </div>
+              <div class="process-content">
+                <h3 class="text-xl font-bold mb-2 gradient-text">Execute & Optimize</h3>
+                <p class="text-gray-300">
+                  Disciplined implementation with constant monitoring and optimization to maximize performance.
+                </p>
+              </div>
+              <!-- Animated connecting line -->
+              <div class="absolute top-16 left-8 w-0.5 h-16 bg-gradient-to-b from-cyan to-blue opacity-30"></div>
+            </div>
+            
+            <!-- Step 4 -->
+            <div class="flex items-start gap-6" data-aos="fade-right" data-aos-delay="600">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-cyan to-blue flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue/20 z-10">
+                <span class="text-white text-xl font-bold">4</span>
+              </div>
+              <div class="process-content">
+                <h3 class="text-xl font-bold mb-2 gradient-text">Scale & Grow</h3>
+                <p class="text-gray-300">
+                  Once we find what works, we expand and scale while maintaining efficiency and quality.
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="flex flex-col items-center">
-            <span class="logo-gradient text-lg font-bold">Ryan</span>
-            <i class="fas fa-file-alt text-3xl text-neon-blue"></i>
-            <span class="text-xs text-gray-400 mt-1">Flaming Copy</span>
-          </div>
-          <div class="flex flex-col items-center">
-            <span class="logo-gradient text-lg font-bold">Amy</span>
-            <i class="fas fa-database text-3xl text-neon-green"></i>
-            <span class="text-xs text-gray-400 mt-1">Giant Data Sheet</span>
+        </div>
+        
+        <div class="flex-1 relative order-1 lg:order-2" data-aos="zoom-in">
+          <!-- Process Visualization -->
+          <div class="relative w-full h-80 md:h-96 floating">
+            <!-- Animated Marketing Funnel SVG -->
+            <svg width="100%" height="100%" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Funnel Shape with gradient -->
+              <path d="M50,50 L350,50 L300,150 L100,150 Z" fill="url(#funnelGrad1)" fill-opacity="0.2" stroke="url(#funnelGrad1)" stroke-width="2" class="svg-path"/>
+              <path d="M100,150 L300,150 L250,250 L150,250 Z" fill="url(#funnelGrad2)" fill-opacity="0.2" stroke="url(#funnelGrad2)" stroke-width="2" class="svg-path" style="animation-delay: 0.3s"/>
+              <path d="M150,250 L250,250 L200,350 L200,350 Z" fill="url(#funnelGrad3)" fill-opacity="0.2" stroke="url(#funnelGrad3)" stroke-width="2" class="svg-path" style="animation-delay: 0.6s"/>
+              
+              <!-- Animated dots/users flowing down -->
+              <circle cx="120" cy="30" r="5" fill="var(--cyan)" opacity="0.8">
+                <animate attributeName="cy" values="30;60;110;170;230;300;350" dur="3s" repeatCount="indefinite" />
+                <animate attributeName="cx" values="120;130;150;180;190;200" dur="3s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.8;1;0.8;1;0.8;0.6;0" dur="3s" repeatCount="indefinite" />
+              </circle>
+              
+              <circle cx="200" cy="30" r="5" fill="var(--blue)" opacity="0.8">
+                <animate attributeName="cy" values="30;60;110;170;230;300;350" dur="4s" begin="1s" repeatCount="indefinite" />
+                <animate attributeName="cx" values="200;190;195;200;195;200" dur="4s" begin="1s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.8;1;0.8;1;0.8;0.6;0" dur="4s" begin="1s" repeatCount="indefinite" />
+              </circle>
+              
+              <circle cx="280" cy="30" r="5" fill="var(--purple)" opacity="0.8">
+                <animate attributeName="cy" values="30;60;110;170;230;300;350" dur="3.5s" begin="0.5s" repeatCount="indefinite" />
+                <animate attributeName="cx" values="280;270;250;220;205;200" dur="3.5s" begin="0.5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.8;1;0.8;1;0.8;0.6;0" dur="3.5s" begin="0.5s" repeatCount="indefinite" />
+              </circle>
+              
+              <!-- Labels -->
+              <text x="200" y="30" fill="white" font-size="14" text-anchor="middle" class="svg-path">AWARENESS</text>
+              <text x="200" y="130" fill="white" font-size="14" text-anchor="middle" class="svg-path" style="animation-delay: 0.3s">CONSIDERATION</text>
+              <text x="200" y="230" fill="white" font-size="14" text-anchor="middle" class="svg-path" style="animation-delay: 0.6s">CONVERSION</text>
+              <text x="200" y="330" fill="white" font-size="14" text-anchor="middle" class="svg-path" style="animation-delay: 0.9s">LOYALTY</text>
+              
+              <!-- Gradients -->
+              <defs>
+                <linearGradient id="funnelGrad1" x1="50" y1="50" x2="350" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="var(--cyan)"/>
+                  <stop offset="100%" stop-color="var(--blue)"/>
+                </linearGradient>
+                <linearGradient id="funnelGrad2" x1="100" y1="150" x2="300" y2="150" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="var(--blue)"/>
+                  <stop offset="100%" stop-color="var(--purple)"/>
+                </linearGradient>
+                <linearGradient id="funnelGrad3" x1="150" y1="250" x2="250" y2="250" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="var(--purple)"/>
+                  <stop offset="100%" stop-color="var(--cyan)"/>
+                </linearGradient>
+              </defs>
+            </svg>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- Proof Section -->
-  <section id="proof" class="mad-section mt-8">
-    <h2 class="headline-glow text-2xl md:text-3xl font-extrabold mb-7 flex items-center gap-2">
-      <span class="text-yellow-400"><i class="fas fa-chart-bar"></i></span>
-      The Madness Works. Here's Proof.
-    </h2>
-    <div class="grid md:grid-cols-3 gap-6 mb-6">
-      <div class="mad-card flex flex-col items-start scroll-fade">
-        <div class="stat-title text-xl mb-1">4.7X ROAS in 45 Days</div>
-        <div class="text-md text-gray-100">D2C Food Brand</div>
+  
+  <!-- Team Section -->
+  <section id="team" class="relative">
+    <div class="backdrop"></div>
+    <div class="mad-section">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">
+          <i class="fas fa-user-astronaut mr-2"></i> Built by Marketing Experts Who Live for Results
+        </h2>
+        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+          Meet the mad minds behind our marketing magic.
+        </p>
       </div>
-      <div class="mad-card flex flex-col items-start scroll-fade">
-        <div class="stat-title text-xl mb-1">₹60 CPL for MBA Program</div>
-        <div class="text-md text-gray-100">in a ₹300 Market</div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Team Member 1 -->
+        <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-48 h-48 rounded-full relative mb-4 overflow-hidden gradient-border p-1 transform transition-transform duration-500 hover:scale-105">
+            <div class="w-full h-full rounded-full overflow-hidden">
+              <!-- Team member image placeholder with animated gradient -->
+              <div class="w-full h-full flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue/30 to-purple/30 z-0"></div>
+                <svg viewBox="0 0 100 100" width="100%" height="100%">
+                  <circle cx="50" cy="35" r="15" fill="var(--blue)" opacity="0.7" />
+                  <rect x="35" y="60" width="30" height="30" rx="5" fill="var(--purple)" opacity="0.7" />
+                </svg>
+                <!-- Animated pulse ring -->
+                <div class="absolute inset-0 border-4 border-blue rounded-full animate-ping opacity-20"></div>
+              </div>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold gradient-text">Jay Richards</h3>
+          <p class="text-gray-300 mb-2">Strategy Director</p>
+          <div class="flex gap-3 mt-2">
+            <a href="#" class="text-gray-400 hover:text-blue transition-colors duration-300"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-gray-400 hover:text-purple transition-colors duration-300"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        
+        <!-- Team Member 2 -->
+        <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-48 h-48 rounded-full relative mb-4 overflow-hidden gradient-border p-1 transform transition-transform duration-500 hover:scale-105">
+            <div class="w-full h-full rounded-full overflow-hidden">
+              <!-- Team member image placeholder with animated gradient -->
+              <div class="w-full h-full flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-cyan/30 to-blue/30 z-0"></div>
+                <svg viewBox="0 0 100 100" width="100%" height="100%">
+                  <circle cx="50" cy="35" r="15" fill="var(--cyan)" opacity="0.7" />
+                  <rect x="35" y="60" width="30" height="30" rx="5" fill="var(--blue)" opacity="0.7" />
+                </svg>
+                <!-- Animated pulse ring -->
+                <div class="absolute inset-0 border-4 border-cyan rounded-full animate-ping opacity-20"></div>
+              </div>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold gradient-text">Amy Chen</h3>
+          <p class="text-gray-300 mb-2">Analytics Lead</p>
+          <div class="flex gap-3 mt-2">
+            <a href="#" class="text-gray-400 hover:text-blue transition-colors duration-300"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-gray-400 hover:text-cyan transition-colors duration-300"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        
+        <!-- Team Member 3 -->
+        <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-48 h-48 rounded-full relative mb-4 overflow-hidden gradient-border p-1 transform transition-transform duration-500 hover:scale-105">
+            <div class="w-full h-full rounded-full overflow-hidden">
+              <!-- Team member image placeholder with animated gradient -->
+              <div class="w-full h-full flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple/30 to-cyan/30 z-0"></div>
+                <svg viewBox="0 0 100 100" width="100%" height="100%">
+                  <circle cx="50" cy="35" r="15" fill="var(--purple)" opacity="0.7" />
+                  <rect x="35" y="60" width="30" height="30" rx="5" fill="var(--cyan)" opacity="0.7" />
+                </svg>
+                <!-- Animated pulse ring -->
+                <div class="absolute inset-0 border-4 border-purple rounded-full animate-ping opacity-20"></div>
+              </div>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold gradient-text">Ryan Brooks</h3>
+          <p class="text-gray-300 mb-2">Creative Director</p>
+          <div class="flex gap-3 mt-2">
+            <a href="#" class="text-gray-400 hover:text-blue transition-colors duration-300"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-gray-400 hover:text-purple transition-colors duration-300"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
       </div>
-      <div class="mad-card flex flex-col items-start scroll-fade">
-        <div class="stat-title text-xl mb-1">+132% CTR Uplift</div>
-        <div class="text-md text-gray-100">Using Creative Refresh System</div>
-      </div>
-    </div>
-    <!-- Logos (monochrome, hover color) -->
-    <div class="flex flex-wrap gap-9 items-center justify-center my-3">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Googleplex-Logo.svg" alt="Brand logo" class="h-8 grayscale hover:filter-none transition">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Meta_Platforms_Logo.svg" alt="Brand logo" class="h-8 grayscale hover:filter-none transition">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/LinkedIn_logo_initials.png" alt="Brand logo" class="h-8 grayscale hover:filter-none transition">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg" alt="Brand logo" class="h-8 grayscale hover:filter-none transition">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="Brand logo" class="h-8 grayscale hover:filter-none transition">
-    </div>
-    <!-- Short testimonials -->
-    <div class="flex flex-col md:flex-row gap-6 items-start mt-7">
-      <blockquote class="testimonial-card scroll-fade">"They're mad, but in a genius way." <span class="not-italic font-bold text-neon-orange">- Client</span></blockquote>
-      <blockquote class="testimonial-card scroll-fade">"We gave them our ad account. Now we give them credit for our revenue." 💸</blockquote>
-      <blockquote class="testimonial-card scroll-fade">"Madketers made us believe in Instagram again. And therapy." 🤡</blockquote>
     </div>
   </section>
-  <!-- Testimonials Carousel Simplified -->
-  <section id="testimonials" class="mad-section mt-8">
-    <h2 class="headline-glow text-2xl md:text-3xl font-extrabold mb-3"><span class="text-teal-400"><i class="fas fa-laugh-beam"></i></span> You'll Laugh. You'll Cry. You'll Hit Record Sales.</h2>
-    <div class="flex flex-wrap gap-5 justify-center">
-      <div class="testimonial-card w-72">"We gave them our ad account. Now we give them credit for our revenue." 💸</div>
-      <div class="testimonial-card w-72">"Madketers made us believe in Instagram again. And therapy." 🤡</div>
-      <div class="testimonial-card w-72">"Crazy ideas. Crazy results. 10/10." 🔥</div>
+  
+  <!-- Results Section -->
+  <section id="results" class="relative">
+    <div class="backdrop"></div>
+    <div class="mad-section">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">
+          <i class="fas fa-chart-bar mr-2"></i> Our Madness Works. Here's Proof.
+        </h2>
+        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+          Real results for real clients. No fluff, just performance.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <!-- Stat Card 1 -->
+        <div class="mad-card gradient-border relative overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan/5 to-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="stat-counter text-4xl font-bold mb-2" data-count="4.7">0</div>
+            <div class="text-xl font-bold gradient-text">X ROAS for E-commerce</div>
+            <p class="text-gray-300 mt-2">Achieved in just 45 days with our strategic approach</p>
+          </div>
+          <!-- Animated graph -->
+          <svg class="absolute bottom-2 right-2 w-20 h-20 opacity-20" viewBox="0 0 100 100" fill="none">
+            <path d="M10,90 L30,70 L50,50 L70,20 L90,10" stroke="url(#statGradient1)" stroke-width="3" class="svg-path"/>
+            <defs>
+              <linearGradient id="statGradient1" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="var(--cyan)"/>
+                <stop offset="100%" stop-color="var(--blue)"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        
+        <!-- Stat Card 2 -->
+        <div class="mad-card gradient-border relative overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue/5 to-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="stat-counter text-4xl font-bold mb-2" data-count="60">0</div>
+            <div class="text-xl font-bold gradient-text">% Lower CPL</div>
+            <p class="text-gray-300 mt-2">For education client in a highly competitive market</p>
+          </div>
+          <!-- Animated chart -->
+          <svg class="absolute bottom-2 right-2 w-20 h-20 opacity-20" viewBox="0 0 100 100" fill="none">
+            <rect x="10" y="60" width="10" height="30" fill="url(#statGradient2)" class="svg-path"/>
+            <rect x="30" y="40" width="10" height="50" fill="url(#statGradient2)" class="svg-path" style="animation-delay: 0.2s"/>
+            <rect x="50" y="30" width="10" height="60" fill="url(#statGradient2)" class="svg-path" style="animation-delay: 0.4s"/>
+            <rect x="70" y="20" width="10" height="70" fill="url(#statGradient2)" class="svg-path" style="animation-delay: 0.6s"/>
+            <defs>
+              <linearGradient id="statGradient2" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="var(--blue)"/>
+                <stop offset="100%" stop-color="var(--purple)"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        
+        <!-- Stat Card 3 -->
+        <div class="mad-card gradient-border relative overflow-hidden group" data-aos="fade-up" data-aos-delay="300">
+          <div class="absolute inset-0 bg-gradient-to-br from-purple/5 to-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="stat-counter text-4xl font-bold mb-2" data-count="132">0</div>
+            <div class="text-xl font-bold gradient-text">% CTR Improvement</div>
+            <p class="text-gray-300 mt-2">Using our Creative Refresh System across ad platforms</p>
+          </div>
+          <!-- Animated pie chart -->
+          <svg class="absolute bottom-2 right-2 w-20 h-20 opacity-20" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="40" stroke="var(--purple)" stroke-width="3" fill="none" opacity="0.3" />
+            <path d="M50,50 L50,10 A40,40 0 1,1 10,50 Z" fill="url(#statGradient3)" class="svg-path"/>
+            <defs>
+              <linearGradient id="statGradient3" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="var(--purple)"/>
+                <stop offset="100%" stop-color="var(--cyan)"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      
+      <!-- Client logos -->
+      <div class="mb-12" data-aos="fade-up">
+        <p class="text-center text-sm text-gray-400 mb-6">TRUSTED BY INNOVATIVE BRANDS</p>
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+          <div class="w-24 h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
+            <svg viewBox="0 0 100 40" width="100%" height="100%">
+              <rect x="10" y="10" width="80" height="20" rx="5" stroke="var(--cyan)" stroke-width="2" fill="none" class="svg-path"/>
+              <text x="50" y="25" fill="white" font-size="12" text-anchor="middle" font-family="Arial" class="svg-path" style="animation-delay: 0.2s">BRAND 1</text>
+            </svg>
+          </div>
+          <div class="w-24 h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
+            <svg viewBox="0 0 100 40" width="100%" height="100%">
+              <circle cx="50" cy="20" r="15" stroke="var(--blue)" stroke-width="2" fill="none" class="svg-path"/>
+              <text x="50" y="25" fill="white" font-size="12" text-anchor="middle" font-family="Arial" class="svg-path" style="animation-delay: 0.2s">BRAND 2</text>
+            </svg>
+          </div>
+          <div class="w-24 h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
+            <svg viewBox="0 0 100 40" width="100%" height="100%">
+              <polygon points="20,10 80,10 90,20 80,30 20,30 10,20" stroke="var(--purple)" stroke-width="2" fill="none" class="svg-path"/>
+              <text x="50" y="25" fill="white" font-size="12" text-anchor="middle" font-family="Arial" class="svg-path" style="animation-delay: 0.2s">BRAND 3</text>
+            </svg>
+          </div>
+          <div class="w-24 h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
+            <svg viewBox="0 0 100 40" width="100%" height="100%">
+              <path d="M10,20 Q50,5 90,20 Q50,35 10,20" stroke="var(--cyan)" stroke-width="2" fill="none" class="svg-path"/>
+              <text x="50" y="22" fill="white" font-size="12" text-anchor="middle" font-family="Arial" class="svg-path" style="animation-delay: 0.2s">BRAND 4</text>
+            </svg>
+          </div>
+          <div class="w-24 h-16 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
+            <svg viewBox="0 0 100 40" width="100%" height="100%">
+              <rect x="20" y="10" width="60" height="20" rx="10" stroke="var(--blue)" stroke-width="2" fill="none" class="svg-path"/>
+              <text x="50" y="25" fill="white" font-size="12" text-anchor="middle" font-family="Arial" class="svg-path" style="animation-delay: 0.2s">BRAND 5</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Testimonials -->
+      <div class="grid md:grid-cols-2 gap-6" data-aos="fade-up">
+        <div class="testimonial-card" data-aos="fade-right" data-aos-delay="100">
+          <p class="mb-4">"They approach marketing with a perfect blend of creativity and analytical precision. Our conversions increased by 43% in the first quarter."</p>
+          <div class="font-bold text-right gradient-text">- E-commerce Client</div>
+        </div>
+        <div class="testimonial-card" data-aos="fade-left" data-aos-delay="200">
+          <p class="mb-4">"Madketers transformed our digital presence and delivered tangible business results. Their strategic approach and attention to detail are unmatched."</p>
+          <div class="font-bold text-right gradient-text">- B2B Client</div>
+        </div>
+        <div class="testimonial-card" data-aos="fade-right" data-aos-delay="300">
+          <p class="mb-4">"Their team's passion for marketing is matched only by their commitment to our success. We've seen consistent growth since partnering with them."</p>
+          <div class="font-bold text-right gradient-text">- Retail Client</div>
+        </div>
+        <div class="testimonial-card" data-aos="fade-left" data-aos-delay="400">
+          <p class="mb-4">"Finally, a marketing team that actually delivers on their promises. The data-driven approach combined with creative execution is refreshing."</p>
+          <div class="font-bold text-right gradient-text">- SaaS Client</div>
+        </div>
+      </div>
     </div>
   </section>
-  <!-- Contact Form Section -->
-  <section id="contact" class="mad-section mt-8">
-    <h2 class="headline-glow text-2xl md:text-3xl font-extrabold mb-4"><span class="text-red-400"><i class="fas fa-envelope-open-text"></i></span> Ready to Scale With the Mad Ones?</h2>
-    <p class="text-gray-200 mb-7 max-w-2xl">🔥 Get a Free 30-Min Funnel Breakdown<br>
-      We'll audit your current setup, and send you a breakdown of what's working, what's not, and how to fix it — no fluff.
-    </p>
-    <form class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto bg-[#17203b] bg-opacity-90 rounded-2xl p-7" autocomplete="off" novalidate>
-      <div class="flex flex-col">
-        <label for="name" class="form-label mb-2">Name</label>
-        <input id="name" name="name" type="text" required class="rounded-md bg-[#223459] px-4 py-2 text-lg text-white focus:outline-none focus:ring-2 focus:ring-neon-blue transition" placeholder="Your Name">
+  
+  <!-- Contact Section -->
+  <section id="contact" class="relative">
+    <div class="backdrop"></div>
+    <div class="mad-section">
+      <div class="text-center mb-8" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">
+          <i class="fas fa-paper-plane mr-2"></i> Ready to Work with the Mad Ones?
+        </h2>
+        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+          🔍 Get a Free Marketing Assessment<br>
+          We'll analyze your current marketing efforts and provide actionable insights on improvements that can drive better results.
+        </p>
       </div>
-      <div class="flex flex-col">
-        <label for="email" class="form-label mb-2">Email</label>
-        <input id="email" name="email" type="email" required class="rounded-md bg-[#223459] px-4 py-2 text-lg text-white focus:outline-none focus:ring-2 focus:ring-neon-blue transition" placeholder="you@email.com">
+      
+      <div class="max-w-3xl mx-auto">
+        <form class="mad-card gradient-border p-8" data-aos="fade-up">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="flex flex-col">
+              <label for="name" class="text-lg font-semibold mb-2 gradient-text">Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                class="bg-[rgba(30,22,53,0.4)] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan focus:ring-2 focus:ring-cyan/50 transition-all duration-300"
+                placeholder="Your Name"
+                required
+              />
+            </div>
+            
+            <div class="flex flex-col">
+              <label for="email" class="text-lg font-semibold mb-2 gradient-text">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                class="bg-[rgba(30,22,53,0.4)] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan focus:ring-2 focus:ring-cyan/50 transition-all duration-300"
+                placeholder="your@email.com"
+                required
+              />
+            </div>
+            
+            <div class="flex flex-col">
+              <label for="website" class="text-lg font-semibold mb-2 gradient-text">Company Website</label>
+              <input 
+                type="url" 
+                id="website" 
+                class="bg-[rgba(30,22,53,0.4)] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan focus:ring-2 focus:ring-cyan/50 transition-all duration-300"
+                placeholder="https://yourcompany.com"
+              />
+            </div>
+            
+            <div class="flex flex-col">
+              <label for="budget" class="text-lg font-semibold mb-2 gradient-text">Marketing Budget</label>
+              <select 
+                id="budget" 
+                class="bg-[rgba(30,22,53,0.4)] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan focus:ring-2 focus:ring-cyan/50 transition-all duration-300"
+                required
+              >
+                <option value="">Select your budget</option>
+                <option>Under $5,000/month</option>
+                <option>$5,000 - $10,000/month</option>
+                <option>$10,000 - $25,000/month</option>
+                <option>$25,000+/month</option>
+              </select>
+            </div>
+            
+            <div class="flex flex-col md:col-span-2">
+              <label for="challenge" class="text-lg font-semibold mb-2 gradient-text">Biggest Marketing Challenge</label>
+              <textarea 
+                id="challenge" 
+                rows="4" 
+                class="bg-[rgba(30,22,53,0.4)] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan focus:ring-2 focus:ring-cyan/50 transition-all duration-300 resize-none"
+                placeholder="Tell us about your biggest marketing challenge..."
+                required
+              ></textarea>
+            </div>
+            
+            <div class="md:col-span-2 flex justify-center mt-4">
+              <button 
+                type="submit" 
+                class="form-ctabtn group relative overflow-hidden px-8 py-4 text-lg"
+              >
+                <span class="relative z-10 flex items-center gap-2">
+                  <i class="fas fa-rocket"></i> Let's Create Something Amazing
+                  <span class="group-hover:translate-x-2 transition-transform duration-300"><i class="fas fa-arrow-right"></i></span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="flex flex-col">
-        <label for="brandUrl" class="form-label mb-2">Brand URL</label>
-        <input id="brandUrl" name="brandUrl" type="url" required class="rounded-md bg-[#223459] px-4 py-2 text-lg text-white focus:outline-none focus:ring-2 focus:ring-neon-green transition" placeholder="https://yourbrand.com">
-      </div>
-      <div class="flex flex-col">
-        <label for="budget" class="form-label mb-2">Monthly Ad Budget</label>
-        <select id="budget" name="budget" required class="rounded-md bg-[#223459] px-4 py-2 text-lg text-white focus:outline-none focus:ring-2 focus:ring-neon-green transition">
-          <option value="">Select range</option>
-          <option>&lt; ₹50k</option>
-          <option>₹50k-₹2L</option>
-          <option>₹2L-₹10L</option>
-          <option>&gt; ₹10L</option>
-        </select>
-      </div>
-      <div class="flex flex-col md:col-span-2">
-        <label for="challenge" class="form-label mb-2">What's your biggest marketing challenge?</label>
-        <textarea id="challenge" name="challenge" required rows="3" class="resize-none rounded-md bg-[#223459] px-4 py-2 text-lg text-white focus:outline-none focus:ring-2 focus:ring-neon-orange transition" placeholder="Keeping up with content? Ads not scaling? Attribution pain?"></textarea>
-      </div>
-      <div class="flex justify-center md:col-span-2 mt-2">
-        <button type="submit" class="form-ctabtn text-lg shadow-md hover:scale-105 transition"><i class="fas fa-bolt"></i> Unleash the Mad Plan</button>
-      </div>
-    </form>
+    </div>
   </section>
+  
   <!-- Footer -->
-  <footer class="mt-12 pb-10">
-    <div class="flex flex-col items-center">
-      <div class="logo-gradient text-3xl mb-2">MADKETERS</div>
-      <div class="font-semibold mb-2 px-4 text-center text-white text-opacity-90">And if you're still scrolling, maybe you're ready to stop playing it safe.</div>
-      <div class="flex flex-col md:flex-row items-center justify-center gap-6 py-3 mb-3 text-sm uppercase text-gray-300 font-semibold">
-        <div class="flex gap-5">
-          <a href="#hero" class="hover:text-neon-orange">Home</a>
-          <a href="#mad-formula" class="hover:text-neon-orange">Work</a>
-          <a href="#how-we-work" class="hover:text-neon-orange">Services</a>
-          <a href="#contact" class="hover:text-neon-orange">Contact</a>
+  <footer class="relative py-12 overflow-hidden">
+    <div class="backdrop"></div>
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col items-center">
+        <a href="#hero" class="text-4xl font-bold gradient-text mb-6" style="letter-spacing:2px;">MADKETERS</a>
+        
+        <div class="max-w-lg text-center mb-8">
+          <p class="text-gray-300">Marketing with purpose, passion, and a touch of madness. We drive results through strategic thinking, creative execution, and data-driven optimization.</p>
         </div>
-        <div class="flex gap-5">
-          <a href="#" class="hover:text-[#0091ff]"><i class="fab fa-linkedin"></i></a>
-          <a href="#" class="hover:text-pink-500"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="hover:text-neon-orange"><i class="fas fa-envelope"></i></a>
+        
+        <div class="flex flex-wrap justify-center gap-8 mb-8">
+          <div class="flex flex-col items-center">
+            <h4 class="font-bold text-lg mb-3 gradient-text">Services</h4>
+            <ul class="text-gray-300 space-y-2 text-center">
+              <li><a href="#services" class="hover:text-cyan transition-colors duration-300">Strategic Planning</a></li>
+              <li><a href="#services" class="hover:text-cyan transition-colors duration-300">Data & Analytics</a></li>
+              <li><a href="#services" class="hover:text-cyan transition-colors duration-300">Social Media</a></li>
+            </ul>
+          </div>
+          
+          <div class="flex flex-col items-center">
+            <h4 class="font-bold text-lg mb-3 gradient-text">Company</h4>
+            <ul class="text-gray-300 space-y-2 text-center">
+              <li><a href="#team" class="hover:text-cyan transition-colors duration-300">Our Team</a></li>
+              <li><a href="#results" class="hover:text-cyan transition-colors duration-300">Results</a></li>
+              <li><a href="#process" class="hover:text-cyan transition-colors duration-300">Process</a></li>
+            </ul>
+          </div>
+          
+          <div class="flex flex-col items-center">
+            <h4 class="font-bold text-lg mb-3 gradient-text">Connect</h4>
+            <ul class="text-gray-300 space-y-2 text-center">
+              <li><a href="#contact" class="hover:text-cyan transition-colors duration-300">Contact Us</a></li>
+              <li><a href="#" class="hover:text-cyan transition-colors duration-300">LinkedIn</a></li>
+              <li><a href="#" class="hover:text-cyan transition-colors duration-300">Instagram</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div class="text-xs text-gray-400 text-center mb-3">
-        Performance Marketing. Content that slaps. Strategy that sticks. <br>
-        Built with way too much coffee and slightly dangerous energy.
+        
+        <div class="flex gap-6 mb-8">
+          <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center border border-gray-700 hover:border-cyan hover:text-cyan transition-all duration-300">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center border border-gray-700 hover:border-purple hover:text-purple transition-all duration-300">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center border border-gray-700 hover:border-blue hover:text-blue transition-all duration-300">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center border border-gray-700 hover:border-cyan hover:text-cyan transition-all duration-300">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+        
+        <div class="text-sm text-gray-500">
+          &copy; 2023 Madketers. All rights reserved.
+        </div>
       </div>
     </div>
   </footer>
-  <!-- Scroll-in Animation Script -->
+  
+  <!-- Scripts -->
+  <!-- AOS Animation Library -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  
   <script>
-    function inViewport(el) {
-      const rect = el.getBoundingClientRect();
-      return (
-        rect.top <= (window.innerHeight||document.documentElement.clientHeight) - 36
-        && rect.bottom >= 50
-      );
-    }
-    function onScrollFade() {
-      document.querySelectorAll('.scroll-fade').forEach(el => {
-        if (inViewport(el)) el.classList.add('inview');
-        else el.classList.remove('inview');
+    // Initialize AOS
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 800,
+        once: false,
+        mirror: true,
+        offset: 50
       });
-    }
-    document.addEventListener('DOMContentLoaded', onScrollFade);
-    window.addEventListener('scroll', onScrollFade);
-    // Mobile menu
-    document.getElementById('mad-menu-btn').onclick = () => {
-      const nav = document.getElementById('mad-mobile-nav');
-      nav.classList.toggle('hidden');
-    };
-    document.querySelectorAll('#mad-mobile-nav a').forEach(a => {
-      a.onclick = () => document.getElementById('mad-mobile-nav').classList.add('hidden');
-    });
-    // Hide menu on resize > md
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        document.getElementById('mad-mobile-nav').classList.add('hidden');
+      
+      // Theme Toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+      const body = document.body;
+      
+      // Check for saved theme
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        body.classList.add('light-theme');
+        themeToggle.checked = true;
+        themeToggleMobile.checked = true;
       }
-    });
-    // Basic form validation (no submit)
-    document.querySelectorAll("form").forEach(form => {
-      form.onsubmit = e => {
-        let valid = true;
-        form.querySelectorAll("[required]").forEach(inp => {
-          if (!inp.value.trim()) valid = false;
-          inp.classList.toggle('ring-4', !inp.value.trim());
-          inp.classList.toggle('ring-red-500', !inp.value.trim());
+      
+      // Toggle theme function
+      function toggleTheme() {
+        body.classList.toggle('light-theme');
+        const isLight = body.classList.contains('light-theme');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      }
+      
+      // Event listeners
+      themeToggle.addEventListener('change', function() {
+        toggleTheme();
+        themeToggleMobile.checked = themeToggle.checked;
+      });
+      
+      themeToggleMobile.addEventListener('change', function() {
+        toggleTheme();
+        themeToggle.checked = themeToggleMobile.checked;
+      });
+      
+      // Mobile menu
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+        mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+      });
+      
+      // Close mobile menu when clicking links
+      document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+          mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+          mobileMenuBtn.querySelector('i').classList.remove('fa-times');
         });
-        if (!valid) e.preventDefault();
-      };
+      });
+      
+      // Cursor glow effect
+      const cursorGlow = document.getElementById('cursor-glow');
+      
+      document.addEventListener('mousemove', function(e) {
+        cursorGlow.style.left = e.clientX + 'px';
+        cursorGlow.style.top = e.clientY + 'px';
+        cursorGlow.style.opacity = '1';
+      });
+      
+      document.addEventListener('mouseleave', function() {
+        cursorGlow.style.opacity = '0';
+      });
+      
+      // Parallax effect
+      const parallaxElements = document.querySelectorAll('.parallax');
+      
+      document.addEventListener('mousemove', function(e) {
+        const mouseX = e.clientX / window.innerWidth - 0.5;
+        const mouseY = e.clientY / window.innerHeight - 0.5;
+        
+        parallaxElements.forEach(function(el) {
+          const depth = parseFloat(el.getAttribute('data-depth') || 0.1);
+          const translateX = mouseX * depth * 50;
+          const translateY = mouseY * depth * 50;
+          
+          el.style.transform = `translate(${translateX}px, ${translateY}px)`;
+        });
+      });
+      
+      // Fireflies animation
+      const firefliesContainer = document.getElementById('fireflies-container');
+      const fireflyCount = 20;
+      
+      for (let i = 0; i < fireflyCount; i++) {
+        const firefly = document.createElement('div');
+        firefly.classList.add('firefly');
+        
+        // Random positions and animations
+        const delay = Math.random() * 5;
+        const duration = 10 + Math.random() * 20;
+        
+        const keyframes = `
+          @keyframes firefly-${i} {
+            0% { transform: translate(${Math.random() * 100}vw, ${Math.random() * 100}vh) scale(${0.5 + Math.random() * 0.5}); opacity: ${0.1 + Math.random() * 0.4}; }
+            25% { transform: translate(${Math.random() * 100}vw, ${Math.random() * 100}vh) scale(${0.5 + Math.random() * 0.5}); opacity: ${0.1 + Math.random() * 0.4}; }
+            50% { transform: translate(${Math.random() * 100}vw, ${Math.random() * 100}vh) scale(${0.5 + Math.random() * 0.5}); opacity: ${0.1 + Math.random() * 0.4}; }
+            75% { transform: translate(${Math.random() * 100}vw, ${Math.random() * 100}vh) scale(${0.5 + Math.random() * 0.5}); opacity: ${0.1 + Math.random() * 0.4}; }
+            100% { transform: translate(${Math.random() * 100}vw, ${Math.random() * 100}vh) scale(${0.5 + Math.random() * 0.5}); opacity: ${0.1 + Math.random() * 0.4}; }
+          }
+        `;
+        
+        const style = document.createElement('style');
+        style.innerHTML = keyframes;
+        document.head.appendChild(style);
+        
+        firefly.style.animation = `firefly-${i} ${duration}s ease-in-out ${delay}s infinite`;
+        
+        firefliesContainer.appendChild(firefly);
+      }
+      
+      // Stats counter animation
+      const counters = document.querySelectorAll('.stat-counter');
+      const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const counter = entry.target;
+            const target = parseFloat(counter.getAttribute('data-count'));
+            let count = 0;
+            const speed = 2000 / target; // Adjust speed based on target value
+            
+            const updateCount = () => {
+              if (count < target) {
+                // Handle decimal values
+                const increment = target < 5 ? 0.1 : 1;
+                count += increment;
+                
+                // Format output
+                if (target < 5) {
+                  counter.innerText = Math.min(count, target).toFixed(1);
+                } else {
+                  counter.innerText = Math.min(Math.floor(count), target);
+                }
+                
+                setTimeout(updateCount, speed);
+              } else {
+                counter.innerText = target % 1 === 0 ? target : target.toFixed(1);
+              }
+            };
+            
+            updateCount();
+            observer.unobserve(counter);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      counters.forEach(counter => {
+        counterObserver.observe(counter);
+      });
+      
+      // Form validation
+      const form = document.querySelector('form');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          let valid = true;
+          const requiredFields = form.querySelectorAll('[required]');
+          
+          requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+              valid = false;
+              field.classList.add('border-red-500');
+              field.classList.add('animate-shake');
+              
+              setTimeout(() => {
+                field.classList.remove('animate-shake');
+              }, 500);
+            } else {
+              field.classList.remove('border-red-500');
+            }
+          });
+          
+          if (valid) {
+            // Form submission success animation
+            const button = form.querySelector('button[type="submit"]');
+            button.innerHTML = '<span class="relative z-10 flex items-center"><i class="fas fa-check mr-2"></i> Message Sent!</span>';
+            button.disabled = true;
+            
+            // Reset form after delay
+            setTimeout(() => {
+              form.reset();
+              button.innerHTML = '<span class="relative z-10 flex items-center gap-2"><i class="fas fa-rocket"></i> Let\'s Create Something Amazing <span class="group-hover:translate-x-2 transition-transform duration-300"><i class="fas fa-arrow-right"></i></span></span>';
+              button.disabled = false;
+            }, 3000);
+          }
+        });
+        
+        // Clear validation styles on input
+        form.querySelectorAll('input, textarea, select').forEach(field => {
+          field.addEventListener('input', function() {
+            field.classList.remove('border-red-500');
+          });
+        });
+      }
     });
   </script>
 </body>
-  </div>
 </html>

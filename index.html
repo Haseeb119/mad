@@ -65,15 +65,31 @@
       color: var(--dark-text);
     }
     
-    .light-theme input, .light-theme textarea, .light-theme select {
-      background-color: #f1f5f9;
-      color: var(--dark-text);
-      border: 1px solid #e2e8f0;
-    }
-    
-    .light-theme input::placeholder, .light-theme textarea::placeholder {
-      color: #64748b; /* Darker placeholder for better visibility in light mode */
-    }
+    /* Make text visible in dark mode */
+input, textarea, select {
+  color: white;
+  background-color: rgba(30, 22, 53, 0.4);
+  border: 1px solid #4b5563;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.light-theme input, .light-theme textarea, .light-theme select {
+  background-color: #f1f5f9;
+  color: var(--dark-text);
+  border: 1px solid #e2e8f0;
+}
+
+/* Make placeholders visible in dark mode */
+input::placeholder, textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.light-theme input::placeholder, .light-theme textarea::placeholder {
+  color: #64748b; /* Darker placeholder for better visibility in light mode */
+}
     
     .light-theme .form-label {
       color: var(--dark-text);

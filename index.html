@@ -537,6 +537,32 @@
         display: none !important;
       }
     }
+    
+    /* Form Specific Fixes */
+    .form-field {
+      position: relative;
+      z-index: 10;
+    }
+    
+    input, textarea, select {
+      position: relative;
+      z-index: 10;
+      pointer-events: auto !important;
+    }
+    
+    #contactForm input,
+    #contactForm textarea,
+    #contactForm select {
+      width: 100%;
+      outline: none;
+      user-select: auto;
+      -webkit-user-select: auto;
+    }
+    
+    /* Fix for cursor-glow potentially interfering with form inputs */
+    #contactForm {
+      isolation: isolate;
+    }
   </style>
 </head>
 <body>
@@ -1300,59 +1326,64 @@
       </div>
       
       <div class="max-w-3xl mx-auto">
-        <form class="mad-card gradient-border p-5 sm:p-8" data-aos="fade-up">
+          <form id="contactForm" class="mad-card gradient-border p-5 sm:p-8" data-aos="fade-up" action="process_form.php" method="POST">
           <div class="grid sm:grid-cols-2 gap-5 sm:gap-6">
-            <div class="flex flex-col">
+            <div class="flex flex-col form-field">
               <label for="name" class="text-base sm:text-lg font-semibold mb-2 gradient-text">Name</label>
               <input 
                 type="text" 
-                id="name" 
+                id="name"
+                name="name"
                 class="bg-[rgba(30,22,53,0.4)] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan focus:ring-2 focus:ring-cyan/50 transition-all duration-300"
                 placeholder="Your Name"
                 required
               />
             </div>
             
-            <div class="flex flex-col">
+            <div class="flex flex-col form-field">
               <label for="email" class="text-base sm:text-lg font-semibold mb-2 gradient-text">Email</label>
               <input 
                 type="email" 
-                id="email" 
+                id="email"
+                name="email"
                 class="bg-[rgba(30,22,53,0.4)] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan focus:ring-2 focus:ring-cyan/50 transition-all duration-300"
                 placeholder="your@email.com"
                 required
               />
             </div>
             
-            <div class="flex flex-col">
+            <div class="flex flex-col form-field">
               <label for="website" class="text-base sm:text-lg font-semibold mb-2 gradient-text">Company Website</label>
               <input 
                 type="url" 
-                id="website" 
+                id="website"
+                name="website"
                 class="bg-[rgba(30,22,53,0.4)] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan focus:ring-2 focus:ring-cyan/50 transition-all duration-300"
                 placeholder="https://yourcompany.com"
               />
             </div>
             
-            <div class="flex flex-col">
+            <div class="flex flex-col form-field">
               <label for="budget" class="text-base sm:text-lg font-semibold mb-2 gradient-text">Marketing Budget</label>
               <select 
-                id="budget" 
+                id="budget"
+                name="budget"
                 class="bg-[rgba(30,22,53,0.4)] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan focus:ring-2 focus:ring-cyan/50 transition-all duration-300"
                 required
               >
                 <option value="">Select your budget</option>
-                <option>Under $5,000/month</option>
-                <option>$5,000 - $10,000/month</option>
-                <option>$10,000 - $25,000/month</option>
-                <option>$25,000+/month</option>
+                <option value="Under $5,000/month">Under $5,000/month</option>
+                <option value="$5,000 - $10,000/month">$5,000 - $10,000/month</option>
+                <option value="$10,000 - $25,000/month">$10,000 - $25,000/month</option>
+                <option value="$25,000+/month">$25,000+/month</option>
               </select>
             </div>
             
-            <div class="flex flex-col sm:col-span-2">
+            <div class="flex flex-col sm:col-span-2 form-field">
               <label for="challenge" class="text-base sm:text-lg font-semibold mb-2 gradient-text">Biggest Marketing Challenge</label>
               <textarea 
-                id="challenge" 
+                id="challenge"
+                name="challenge"
                 rows="4" 
                 class="bg-[rgba(30,22,53,0.4)] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan focus:ring-2 focus:ring-cyan/50 transition-all duration-300 resize-none"
                 placeholder="Tell us about your biggest marketing challenge..."
